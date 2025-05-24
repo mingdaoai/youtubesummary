@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import os
 import sys
 from pathlib import Path
@@ -96,7 +97,7 @@ def answer_question(client, question: str, chat_history: list, initial_context: 
         messages=messages,
         model=DEEPSEEK_MODEL,
         temperature=0.3,
-        max_tokens=800,
+        max_tokens=5000,
     )
     answer = chat_completion.choices[0].message.content.strip()
     # Remove <think>...</think> section if present (multiline)
