@@ -12,12 +12,14 @@ import yt_dlp
 from urllib.parse import urlparse
 import logging
 import requests
+import subprocess
 
 # ========== CONFIGURATION ==========
 CACHE_DIR = Path(__file__).parent / ".cache"
 CACHE_DIR.mkdir(exist_ok=True)
 GROQ_KEY_PATH = Path.home() / ".mingdaoai" / "groq.key"
 DEEPSEEK_MODEL = "DeepSeek-R1-Distill-Llama-70b"
+HISTORY_JSON = Path(__file__).parent / ".youtubesummary_history.json"
 
 # ========== UTILS ==========
 def load_groq_key():
@@ -43,10 +45,23 @@ def get_cached_transcript(video_id: str) -> dict | None:
             return json.load(f)
     return None
 
-def cache_transcript(video_id: str, transcript: str, language: str):
+def cache_transcript(video_id: str, transcript: str, language: str, title: str = None):
     cache_file = CACHE_DIR / f"{video_id}.json"
+    data = {"transcript": transcript, "language": language}
+    if title:
+        data["title"] = title
+    else:
+        # If title already exists in cache, preserve it
+        if cache_file.exists():
+            try:
+                with open(cache_file, "r", encoding="utf-8") as f:
+                    old = json.load(f)
+                    if "title" in old:
+                        data["title"] = old["title"]
+            except Exception:
+                pass
     with open(cache_file, "w", encoding="utf-8") as f:
-        json.dump({"transcript": transcript, "language": language}, f, ensure_ascii=False)
+        json.dump(data, f, ensure_ascii=False)
 
 def try_youtube_transcript(video_id):
     try:
@@ -255,32 +270,69 @@ def retry_transcribe_if_needed(transcribe, s3, job_name, job_uri, language, buck
         raise
 
 def download_transcript(video_id: str) -> dict:
-    # Step 1: Try YouTubeTranscriptApi
+    logging.info("Step 1: Try YouTubeTranscriptApi")
     result = try_youtube_transcript(video_id)
     if result:
-        return result
-    # Step 2: Download video if needed
+        # Try to cache title if not present
+        cache_file = CACHE_DIR / f"{video_id}.json"
+        title = None
+        if cache_file.exists():
+            try:
+                with open(cache_file, "r", encoding="utf-8") as f:
+                    cache_data = json.load(f)
+                    title = cache_data.get("title")
+            except Exception:
+                title = None
+        if not title:
+            try:
+                with yt_dlp.YoutubeDL({"quiet": True}) as ydl:
+                    info = ydl.extract_info(f"https://www.youtube.com/watch?v={video_id}", download=False)
+                    title = info.get('title')
+            except Exception:
+                title = None
+        # Update cache with title if needed
+        if title:
+            cache_transcript(video_id, result["transcript"], result["language"], title)
+        return {**result, "title": title} if title else result
+    logging.info("Step 2: Download video if needed")
     temp_dir = CACHE_DIR
     temp_dir.mkdir(exist_ok=True)
     video_url = f"https://www.youtube.com/watch?v={video_id}"
     video_path = temp_dir / f"{video_id}.mp4"
     title = download_video_if_needed(video_id, video_url, video_path)
-    # Step 3: Detect and confirm language
+    logging.info("Step 3: Detect and confirm language")
     language = detect_and_confirm_language(video_id, title)
-    # Step 4: Upload to S3 if needed
+    logging.info("Step 4: Extract mp3 from video before uploading")
+    mp3_path = temp_dir / f"{video_id}.mp3"
+    if not mp3_path.exists():
+        try:
+            cmd = [
+                "ffmpeg", "-y", "-i", str(video_path),
+                "-vn", "-acodec", "libmp3lame", "-ar", "44100", "-ac", "2", "-b:a", "192k", str(mp3_path)
+            ]
+            logging.info(f"Running ffmpeg to extract mp3: {' '.join(cmd)}")
+            subprocess.run(cmd, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            logging.info(f"MP3 extraction complete: {mp3_path}")
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
+            raise
+    else:
+        logging.info(f"MP3 file {mp3_path} already exists. Using cached mp3 for upload.")
+    logging.info("Step 5: Upload mp3 to S3")
     import boto3
     s3 = boto3.client('s3')
     bucket = 'mdaudiosound'
-    s3_key = f'input/{video_id}.mp4'
-    upload_to_s3_if_needed(video_path, s3, bucket, s3_key)
-    # Step 5: Start or resume AWS Transcribe job
+    s3_key = f'input/{video_id}.mp3'
+    upload_to_s3_if_needed(mp3_path, s3, bucket, s3_key)
+    logging.info("Step 6: Start or resume AWS Transcribe job")
     transcribe = boto3.client('transcribe', 'us-west-2')
     job_name = f"transcribe-job-{video_id}"
     job_uri = f"s3://{bucket}/{s3_key}"
     status = start_or_resume_transcribe_job(transcribe, job_name, job_uri, language)
-    # Step 6: Wait for job completion
+    logging.info("Step 7: Wait for AWS Transcribe job to complete")
     status = wait_for_transcribe_job(transcribe, job_name, status)
-    # Step 7: Fetch transcript from URL, retry if needed
+    logging.info("Step 8: Fetch transcript from URL")
     retry_transcribe = False
     if status['TranscriptionJob']['TranscriptionJobStatus'] == 'COMPLETED':
         transcript_uri = status['TranscriptionJob']['Transcript']['TranscriptFileUri']
@@ -297,9 +349,20 @@ def download_transcript(video_id: str) -> dict:
                              for item in transcript_data['results']['items']
                              if item['type'] == 'pronunciation')
         # Cache and return
-        cache_transcript(video_id, transcript, language)
+        cache_transcript(video_id, transcript, language, title)
         logging.info("Transcript successfully cached.")
-        return {"transcript": transcript, "language": language}
+        # Delete mp4 and mp3 after successful transcription
+        try:
+            if video_path.exists():
+                video_path.unlink()
+                logging.info(f"Deleted video file: {video_path}")
+            if mp3_path.exists():
+                mp3_path.unlink()
+                logging.info(f"Deleted mp3 file: {mp3_path}")
+        except Exception as e:
+            traceback.print_exc()
+            raise
+        return {"transcript": transcript, "language": language, "title": title}
     else:
         logging.error("Transcription job failed.")
         raise Exception("Transcription job failed")
@@ -307,6 +370,17 @@ def download_transcript(video_id: str) -> dict:
 def get_transcript(video_id: str) -> dict:
     cached = get_cached_transcript(video_id)
     if cached and 'transcript' in cached and 'language' in cached:
+        # Try to ensure title is present in cache
+        if 'title' not in cached or not cached['title']:
+            try:
+                with yt_dlp.YoutubeDL({"quiet": True}) as ydl:
+                    info = ydl.extract_info(f"https://www.youtube.com/watch?v={video_id}", download=False)
+                    title = info.get('title')
+            except Exception:
+                title = None
+            if title:
+                cache_transcript(video_id, cached['transcript'], cached['language'], title)
+                cached['title'] = title
         print("Loaded transcript from cache.")
         return cached
     print("Downloading transcript...")
@@ -320,7 +394,7 @@ def create_groq_client():
 def summarize_transcript(client, transcript: str) -> str:
     prompt = (
         "Summarize the following YouTube video transcript in a concise paragraph. "
-        "Focus on the main points and key takeaways.\n\nTranscript:\n" + transcript
+        "Focus on the main points and key takeaways. Create a structure with some bullet points that is easy to understand and follow.\n\nTranscript:\n" + transcript
     )
     messages = [
         {"role": "system", "content": "You are a helpful assistant that summarizes YouTube videos."},
@@ -357,10 +431,55 @@ def answer_question(client, question: str, chat_history: list, initial_context: 
     answer = re.sub(r'<think>[\s\S]*?</think>', '', answer, flags=re.DOTALL).strip()
     return answer
 
+def load_url_history():
+    if HISTORY_JSON.exists():
+        try:
+            with open(HISTORY_JSON, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            return []
+    return []
+
+def save_url_history(history):
+    try:
+        with open(HISTORY_JSON, "w", encoding="utf-8") as f:
+            json.dump(history, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        logging.error(f"Failed to save URL history: {e}", exc_info=True)
+        traceback.print_exc()
+
+def add_to_url_history(url, title):
+    history = load_url_history()
+    # Remove duplicates (by url)
+    history = [item for item in history if item.get("url") != url]
+    history.insert(0, {"url": url, "title": title})
+    save_url_history(history)
+
 # ========== MAIN CHATBOT LOGIC ==========
 def main():
     print("YouTube Video Summarizer & Chatbot (DeepSeek)")
-    url = input("Enter YouTube video URL: ").strip()
+    # Load history and prompt user
+    url_history = load_url_history()
+    url = None
+    if url_history:
+        print("\nPreviously used YouTube videos:")
+        # Show oldest first, so reverse the list
+        oldest_first = list(reversed(url_history))
+        total = len(oldest_first)
+        for idx, item in enumerate(oldest_first, 1):
+            # Numbering: latest video (last in list) is 1, oldest is total
+            number = total - idx + 1
+            print(f"  {number}. {item['title']}\n     {item['url']}")
+        print("\nEnter a new YouTube video URL, or select a number from above:")
+        user_input = input("Your choice: ").strip()
+        # Map user input to the correct url
+        if user_input.isdigit() and 1 <= int(user_input) <= total:
+            # Since 1 is latest (last in oldest_first), map accordingly
+            url = oldest_first[total - int(user_input)]["url"]
+        else:
+            url = user_input
+    else:
+        url = input("Enter YouTube video URL: ").strip()
     try:
         video_id = extract_video_id(url)
     except Exception as e:
@@ -368,6 +487,26 @@ def main():
         sys.exit(1)
     transcript_dict = get_transcript(video_id)
     client = create_groq_client()
+    # Get title for history
+    # Try to get title from cache or fallback to YouTube API
+    title = None
+    cache_file = CACHE_DIR / f"{video_id}.json"
+    if cache_file.exists():
+        try:
+            with open(cache_file, "r", encoding="utf-8") as f:
+                cache_data = json.load(f)
+                title = cache_data.get("title")
+        except Exception:
+            title = None
+    if not title:
+        # Try yt-dlp to get title
+        try:
+            with yt_dlp.YoutubeDL({"quiet": True}) as ydl:
+                info = ydl.extract_info(url, download=False)
+                title = info.get('title', url)
+        except Exception:
+            title = url
+    add_to_url_history(url, title)
     summary = summarize_transcript(client, transcript_dict['transcript'])
     chat_history = []
     # Prepare initial context (system and user messages)
@@ -390,6 +529,24 @@ def main():
                 print(f"Error: {e}")
                 continue
             transcript_dict = get_transcript(video_id)
+            # Get title for history
+            title = None
+            cache_file = CACHE_DIR / f"{video_id}.json"
+            if cache_file.exists():
+                try:
+                    with open(cache_file, "r", encoding="utf-8") as f:
+                        cache_data = json.load(f)
+                        title = cache_data.get("title")
+                except Exception:
+                    title = None
+            if not title:
+                try:
+                    with yt_dlp.YoutubeDL({"quiet": True}) as ydl:
+                        info = ydl.extract_info(question, download=False)
+                        title = info.get('title', question)
+                except Exception:
+                    title = question
+            add_to_url_history(question, title)
             summary = summarize_transcript(client, transcript_dict['transcript'])
             chat_history = []
             initial_context = [
@@ -407,4 +564,15 @@ if __name__ == "__main__":
         level=logging.INFO,
         format='%(asctime)s %(levelname)s %(pathname)s:%(lineno)d %(message)s',
     )
+    try:
+        import readline
+        import atexit
+        histfile = str(Path(__file__).parent / ".youtubesummary_history")
+        try:
+            readline.read_history_file(histfile)
+        except FileNotFoundError:
+            pass
+        atexit.register(readline.write_history_file, histfile)
+    except ImportError:
+        print("Module readline not available. Command history will not be enabled.")
     main()
