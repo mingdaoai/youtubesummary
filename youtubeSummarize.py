@@ -2,8 +2,7 @@
 import os
 import sys
 from pathlib import Path
-from youtube_transcript_api import YouTubeTranscriptApi
-import groq
+import google.generativeai as genai
 import re
 import time
 import json
@@ -13,21 +12,35 @@ from urllib.parse import urlparse
 import logging
 import requests
 import subprocess
+import datetime
+from ads.youtube_analyze.youtubeMetaUtil import download_transcript as meta_download_transcript
+import whisper
+from youtubeTranscript import download_youtube_transcript, download_youtube_transcript_alternative, get_available_languages
 
 # ========== CONFIGURATION ==========
 CACHE_DIR = Path(__file__).parent / ".cache"
 CACHE_DIR.mkdir(exist_ok=True)
-GROQ_KEY_PATH = Path.home() / ".mingdaoai" / "groq.key"
-DEEPSEEK_MODEL = "DeepSeek-R1-Distill-Llama-70b"
+GEMINI_MODEL_NAME = "gemini-2.5-flash"  # Gemini model for text generation
 HISTORY_JSON = Path(__file__).parent / ".youtubesummary_history.json"
 
 # ========== UTILS ==========
-def load_groq_key():
+def create_gemini_client():
+    """Create Gemini client using API key from file."""
     try:
-        with open(GROQ_KEY_PATH, "r") as f:
-            return f.read().strip()
-    except FileNotFoundError:
-        print(f"Error: Groq API key not found at {GROQ_KEY_PATH}")
+        # Read API key from file
+        api_key_path = os.path.expanduser("~/.mingdaoai/gemini.key")
+        with open(api_key_path, "r") as f:
+            api_key = f.read().strip()
+        
+        # Configure Gemini
+        genai.configure(api_key=api_key)
+        
+        # Initialize the model
+        model = genai.GenerativeModel(GEMINI_MODEL_NAME)
+        return model
+    except Exception as e:
+        print(f"Error creating Gemini client: {e}")
+        print("Make sure Gemini API key is configured at ~/.mingdaoai/gemini.key")
         sys.exit(1)
 
 def extract_video_id(url: str) -> str:
@@ -64,20 +77,62 @@ def cache_transcript(video_id: str, transcript: str, language: str, title: str =
         json.dump(data, f, ensure_ascii=False)
 
 def try_youtube_transcript(video_id):
+    """
+    Try to extract transcript using youtubeTranscript.py functions.
+    Returns a dict with 'transcript' and 'language' or None if not available.
+    """
     try:
-        transcript_list = YouTubeTranscriptApi.get_transcript(video_id, languages=['en', 'zh-Hant', 'zh-Hans'])
-        transcript = "\n".join(item["text"] for item in transcript_list)
-        language = 'en-US'
-        cache_transcript(video_id, transcript, language)
-        return {"transcript": transcript, "language": language}
-    except Exception as e:
-        import youtube_transcript_api
-        if isinstance(e, getattr(youtube_transcript_api._errors, 'TranscriptsDisabled', type(None))):
-            logging.error(f"Could not get transcript: {str(e)}")
-        else:
-            logging.error(f"Could not get transcript: {str(e)}", exc_info=True)
-            traceback.print_exc()
+        url = f"https://www.youtube.com/watch?v={video_id}"
+        
+        # Try the main transcript download function first
+        transcript_text = download_youtube_transcript(
+            url, 
+            language_codes=['en', 'en-US', 'en-GB', 'zh-CN', 'zh-TW', 'zh']
+        )
+        
+        if transcript_text:
+            # Get available languages to determine the language used
+            available_languages = get_available_languages(url)
+            language = 'en'  # default
+            if available_languages:
+                # Use the first available language
+                language = available_languages[0]['language_code']
+            
+            cache_transcript(video_id, transcript_text, language)
+            return {"transcript": transcript_text, "language": language}
+        
+        # If main method failed, try alternative method
+        transcript_text = download_youtube_transcript_alternative(url)
+        if transcript_text:
+            # Get available languages to determine the language used
+            available_languages = get_available_languages(url)
+            language = 'en'  # default
+            if available_languages:
+                # Use the first available language
+                language = available_languages[0]['language_code']
+            
+            cache_transcript(video_id, transcript_text, language)
+            return {"transcript": transcript_text, "language": language}
+        
         return None
+        
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        raise
+
+def transcribe_with_whisper(mp3_path):
+    """Transcribe the given mp3 file using Whisper and return transcript and language."""
+    try:
+        model = whisper.load_model("base")
+        result = model.transcribe(str(mp3_path))
+        transcript = result["text"].strip()
+        language = result.get("language", "en-US")
+        return transcript, language
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        raise
 
 def download_video_if_needed(video_id, video_url, video_path):
     if video_path.exists():
@@ -270,7 +325,7 @@ def retry_transcribe_if_needed(transcribe, s3, job_name, job_uri, language, buck
         raise
 
 def download_transcript(video_id: str) -> dict:
-    logging.info("Step 1: Try YouTubeTranscriptApi")
+    logging.info("Step 1: Try extracting transcript with youtubeTranscript.py")
     result = try_youtube_transcript(video_id)
     if result:
         # Try to cache title if not present
@@ -319,6 +374,29 @@ def download_transcript(video_id: str) -> dict:
             raise
     else:
         logging.info(f"MP3 file {mp3_path} already exists. Using cached mp3 for upload.")
+
+    # Step 5: Transcribe with Whisper
+    logging.info("Step 5: Transcribe audio with Whisper")
+    try:
+        transcript, whisper_language = transcribe_with_whisper(mp3_path)
+        cache_transcript(video_id, transcript, whisper_language, title)
+        logging.info("Transcript successfully cached using Whisper.")
+        # Optionally delete mp4 and mp3 after successful transcription
+        try:
+            if video_path.exists():
+                video_path.unlink()
+                logging.info(f"Deleted video file: {video_path}")
+            if mp3_path.exists():
+                mp3_path.unlink()
+                logging.info(f"Deleted mp3 file: {mp3_path}")
+        except Exception as e:
+            traceback.print_exc()
+            raise
+        return {"transcript": transcript, "language": whisper_language, "title": title}
+    except Exception as e:
+        logging.error("Whisper transcription failed, falling back to AWS routines.", exc_info=True)
+
+    # ========== AWS TRANSCRIBE ROUTINES (fallback, kept for future use) ==========
     logging.info("Step 5: Upload mp3 to S3")
     import boto3
     s3 = boto3.client('s3')
@@ -386,47 +464,64 @@ def get_transcript(video_id: str) -> dict:
     print("Downloading transcript...")
     return download_transcript(video_id)
 
-# ========== DEEPSEEK (GROQ) CLIENT ==========
-def create_groq_client():
-    api_key = load_groq_key()
-    return groq.Client(api_key=api_key)
+# ========== GEMINI CLIENT ==========
 
-def summarize_transcript(client, transcript: str) -> str:
+def invoke_gemini_model(model, prompt: str, max_tokens: int = 2000, temperature: float = 0.3) -> str:
+    """Invoke Gemini model with a prompt."""
+    try:
+        # Configure generation parameters
+        generation_config = genai.types.GenerationConfig(
+            max_output_tokens=max_tokens,
+            temperature=temperature,
+        )
+        
+        # Generate content
+        response = model.generate_content(
+            prompt,
+            generation_config=generation_config
+        )
+        
+        return response.text.strip()
+        
+    except Exception as e:
+        print(f"Error invoking Gemini model: {e}")
+        raise
+
+def summarize_transcript(model, transcript: str) -> str:
     prompt = (
         "Summarize the following YouTube video transcript in a concise paragraph. "
         "Focus on the main points and key takeaways. Create a structure with some bullet points that is easy to understand and follow.\n\nTranscript:\n" + transcript
     )
-    messages = [
-        {"role": "system", "content": "You are a helpful assistant that summarizes YouTube videos."},
-        {"role": "user", "content": prompt}
-    ]
-    print("\nSummarizing transcript with DeepSeek...")
-    chat_completion = client.chat.completions.create(
-        messages=messages,
-        model=DEEPSEEK_MODEL,
-        temperature=0.3,
-        max_tokens=2000,
-    )
-    summary = chat_completion.choices[0].message.content.strip()
+    print("\nSummarizing transcript with Gemini...")
+    summary = invoke_gemini_model(model, prompt, max_tokens=2000, temperature=0.3)
     # Remove <think>...</think> section if present (multiline)
     summary = re.sub(r'<think>[\s\S]*?</think>', '', summary, flags=re.DOTALL).strip()
     print("\n===== SUMMARY =====\n" + summary + "\n===================\n")
     return summary
 
-def answer_question(client, question: str, chat_history: list, initial_context: list) -> str:
-    # Compose the full message history: initial context + chat history + new question
-    messages = initial_context.copy()
+def answer_question(model, question: str, chat_history: list, initial_context: list) -> str:
+    # Compose the full prompt with context and chat history
+    prompt_parts = []
+    
+    # Add initial context
+    for msg in initial_context:
+        if msg["role"] == "system":
+            prompt_parts.append(f"System: {msg['content']}")
+        elif msg["role"] == "user":
+            prompt_parts.append(f"User: {msg['content']}")
+    
+    # Add chat history
     for turn in chat_history:
-        messages.append({"role": "user", "content": turn["question"]})
-        messages.append({"role": "assistant", "content": turn["answer"]})
-    messages.append({"role": "user", "content": question})
-    chat_completion = client.chat.completions.create(
-        messages=messages,
-        model=DEEPSEEK_MODEL,
-        temperature=0.3,
-        max_tokens=5000,
-    )
-    answer = chat_completion.choices[0].message.content.strip()
+        prompt_parts.append(f"User: {turn['question']}")
+        prompt_parts.append(f"Assistant: {turn['answer']}")
+    
+    # Add current question
+    prompt_parts.append(f"User: {question}")
+    
+    # Join all parts
+    prompt = "\n\n".join(prompt_parts)
+    
+    answer = invoke_gemini_model(model, prompt, max_tokens=5000, temperature=0.3)
     # Remove <think>...</think> section if present (multiline)
     answer = re.sub(r'<think>[\s\S]*?</think>', '', answer, flags=re.DOTALL).strip()
     return answer
@@ -435,7 +530,17 @@ def load_url_history():
     if HISTORY_JSON.exists():
         try:
             with open(HISTORY_JSON, "r", encoding="utf-8") as f:
-                return json.load(f)
+                history = json.load(f)
+                # Migrate old entries that don't have date_requested
+                migrated = False
+                for item in history:
+                    if 'date_requested' not in item:
+                        item['date_requested'] = datetime.datetime.now().isoformat()
+                        migrated = True
+                # Save migrated history if any changes were made
+                if migrated:
+                    save_url_history(history)
+                return history
         except Exception:
             return []
     return []
@@ -452,12 +557,12 @@ def add_to_url_history(url, title):
     history = load_url_history()
     # Remove duplicates (by url)
     history = [item for item in history if item.get("url") != url]
-    history.insert(0, {"url": url, "title": title})
+    history.insert(0, {"url": url, "title": title, "date_requested": datetime.datetime.now().isoformat()})
     save_url_history(history)
 
 # ========== MAIN CHATBOT LOGIC ==========
 def main():
-    print("YouTube Video Summarizer & Chatbot (DeepSeek)")
+    print("YouTube Video Summarizer & Chatbot (Claude 3.5 Sonnet on AWS Bedrock)")
     # Load history and prompt user
     url_history = load_url_history()
     url = None
@@ -469,7 +574,15 @@ def main():
         for idx, item in enumerate(oldest_first, 1):
             # Numbering: latest video (last in list) is 1, oldest is total
             number = total - idx + 1
-            print(f"  {number}. {item['title']}\n     {item['url']}")
+            # Format date if available, otherwise show "Unknown date"
+            date_str = "Unknown date"
+            if 'date_requested' in item:
+                try:
+                    date_obj = datetime.datetime.fromisoformat(item['date_requested'])
+                    date_str = date_obj.strftime("%Y-%m-%d %H:%M")
+                except (ValueError, TypeError):
+                    date_str = "Unknown date"
+            print(f"  {number}. {item['title']}\n     {item['url']}\n     Requested: {date_str}")
         print("\nEnter a new YouTube video URL, or select a number from above:")
         user_input = input("Your choice: ").strip()
         # Map user input to the correct url
@@ -486,7 +599,7 @@ def main():
         print(f"Error: {e}")
         sys.exit(1)
     transcript_dict = get_transcript(video_id)
-    client = create_groq_client()
+    model = create_gemini_client()
     # Get title for history
     # Try to get title from cache or fallback to YouTube API
     title = None
@@ -507,7 +620,7 @@ def main():
         except Exception:
             title = url
     add_to_url_history(url, title)
-    summary = summarize_transcript(client, transcript_dict['transcript'])
+    summary = summarize_transcript(model, transcript_dict['transcript'])
     chat_history = []
     # Prepare initial context (system and user messages)
     initial_context = [
@@ -547,7 +660,7 @@ def main():
                 except Exception:
                     title = question
             add_to_url_history(question, title)
-            summary = summarize_transcript(client, transcript_dict['transcript'])
+            summary = summarize_transcript(model, transcript_dict['transcript'])
             chat_history = []
             initial_context = [
                 {"role": "system", "content": "You are a helpful assistant that answers questions about a YouTube video based on its transcript and summary."},
@@ -555,7 +668,7 @@ def main():
             ]
             print("\nYou can now ask questions about the new video. Type 'exit' to quit, or enter a new YouTube URL to start over.")
             continue
-        answer = answer_question(client, question, chat_history, initial_context)
+        answer = answer_question(model, question, chat_history, initial_context)
         print("\nAnswer:", answer)
         chat_history.append({"question": question, "answer": answer})
 
