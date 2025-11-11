@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Cache and temporary files
+.cache/
+*.mp3
+*.mp4
+*.wav
+*.part
+*.tmp
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# AWS and credentials
+.aws/
+*.pem
+*.key
+*.env
+.env.local
+
+# Logs
+*.log
+logs/
+
+# Test and temporary files
+test_*.py
+*_test.py
+kuber*
+transcript_*.txt
+kubernetes/
+
+# History files
+.youtubesummary_history
+.youtubesummary_history.json
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
