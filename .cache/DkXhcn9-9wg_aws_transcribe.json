@@ -1,0 +1,7933 @@
+{
+  "jobName": "transcribe-job-DkXhcn9-9wg",
+  "accountId": "659161076841",
+  "status": "COMPLETED",
+  "results": {
+    "transcripts": [
+      {
+        "transcript": "你知道世界上最大的减肥药公司是哪个公司吗?是诺和诺德和里兰你知道他值多少钱吗?诺和诺德里兰曾经一度将近一万亿美金但是呢这个斯美格鲁泰啊这个世界上原来最牛逼的减肥药最近开始暴跌了你能为啥暴跌吗?是因为它的销售额不足预期就是现在呢股价呢?腰斩再腰斩打了个三点五折到四折之间。从这个六七千个亿现在跌到了两千个亿了增发了有四千多亿美金啊恐怖吧那如果说世界上最牛逼的减肥药公司还有这个糖尿病公司都这样你觉得不牛逼的公司会怎么样?会不会跌得更惨呀?对呀所以呢你看我们对比一下创医药公司啊你看多多得现在呢pe呢只有十三倍左右然后默沙东啊,也是制药巨头啊,只有十二倍左右,包括再生远公司也就十二三倍左右。但是你知道中国的畅销公司现在雇值多少倍吗?中国创业公司现在都亏了好多年,亏了好多年,今年还在暴涨,而且我告诉你啊,就是中国的这些创销公司呢,它的产品基本都卖给了这几家公司,卖给了欧美的这些创业巨头。那如果买这些呃医药专利的公司如果都不行了,你觉得卖的会受受影响?对呀,肯定受影响很大,对不对?所以很多时候买这个港股创校的兄弟呢?还是要防范一下风险啊比如说你甲方买方是吧,都在裁员降薪啊都在过苦日子。那你卖家肯定受影响因为你的客户是吧?都是入不敷出了那你作为一个制造商肯定也很难受这对应了今年为什么很多行业卷的这么厉害但是股价呢跌跌不休是吧?你像家电是吧?因为你出口的话你的客户现在消费也不景气对吧?你像那些制药公司他们为什么裁员呢?就是因为他们的人工成本太高业绩下滑是吧?他们想赶紧节衣缩食但是如果说我们的推销公司呢?还在暴涨是不是意味着这个节点快到了所以呢买创销兄弟呢一定要小心一点啊"
+      }
+    ],
+    "speaker_labels": {
+      "segments": [
+        {
+          "start_time": "1.539",
+          "end_time": "20.85",
+          "speaker_label": "spk_0",
+          "items": [
+            {
+              "speaker_label": "spk_0",
+              "start_time": "1.549",
+              "end_time": "1.559"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "1.899",
+              "end_time": "2.299"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "2.42",
+              "end_time": "2.66"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "2.66",
+              "end_time": "2.98"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "2.98",
+              "end_time": "3.14"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "3.14",
+              "end_time": "3.259"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "3.259",
+              "end_time": "3.94"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "3.94",
+              "end_time": "4.059"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "4.059",
+              "end_time": "4.11"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "4.11",
+              "end_time": "4.469"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "4.469",
+              "end_time": "4.619"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "4.619",
+              "end_time": "4.67"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "5.809",
+              "end_time": "6.099"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "6.099",
+              "end_time": "6.44"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "6.44",
+              "end_time": "6.449"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "6.449",
+              "end_time": "6.82"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "6.82",
+              "end_time": "6.98"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "6.98",
+              "end_time": "7.55"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "8.18",
+              "end_time": "8.26"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "8.26",
+              "end_time": "8.34"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "8.34",
+              "end_time": "8.569"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "8.569",
+              "end_time": "8.819"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "8.819",
+              "end_time": "8.97"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "8.97",
+              "end_time": "9.06"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "10.22",
+              "end_time": "10.449"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "10.449",
+              "end_time": "10.46"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "10.46",
+              "end_time": "10.77"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "10.77",
+              "end_time": "11.06"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "11.06",
+              "end_time": "11.329"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "11.329",
+              "end_time": "11.609"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "11.609",
+              "end_time": "11.85"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "11.85",
+              "end_time": "12.039"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "12.039",
+              "end_time": "12.77"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "13.26",
+              "end_time": "13.489"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "13.489",
+              "end_time": "13.989"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "14.42",
+              "end_time": "15.109"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "15.229",
+              "end_time": "15.939"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "15.939",
+              "end_time": "16.37"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "16.729",
+              "end_time": "17.02"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "17.02",
+              "end_time": "17.18"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "17.18",
+              "end_time": "17.54"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "17.54",
+              "end_time": "17.809"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "17.809",
+              "end_time": "17.989"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "17.989",
+              "end_time": "18.11"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "18.11",
+              "end_time": "18.18"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "18.18",
+              "end_time": "18.86"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "18.86",
+              "end_time": "19.329"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "20.02",
+              "end_time": "20.26"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "20.26",
+              "end_time": "20.62"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "20.62",
+              "end_time": "20.819"
+            }
+          ]
+        },
+        {
+          "start_time": "21.67",
+          "end_time": "31.299",
+          "speaker_label": "spk_0",
+          "items": [
+            {
+              "speaker_label": "spk_0",
+              "start_time": "21.68",
+              "end_time": "21.69"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "21.84",
+              "end_time": "21.93"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "21.93",
+              "end_time": "22.139"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "22.139",
+              "end_time": "22.459"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "22.459",
+              "end_time": "22.549"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "23.7",
+              "end_time": "23.909"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "23.909",
+              "end_time": "24.0"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "24.0",
+              "end_time": "24.1"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "24.1",
+              "end_time": "24.67"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "24.67",
+              "end_time": "24.829"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "24.829",
+              "end_time": "25.379"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "26.11",
+              "end_time": "26.629"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "26.629",
+              "end_time": "26.959"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "26.959",
+              "end_time": "27.229"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "27.229",
+              "end_time": "27.62"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "27.62",
+              "end_time": "27.67"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "27.69",
+              "end_time": "28.03"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "28.03",
+              "end_time": "28.1"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "28.1",
+              "end_time": "28.27"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "28.27",
+              "end_time": "28.53"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "29.149",
+              "end_time": "29.79"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "29.79",
+              "end_time": "30.12"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "30.12",
+              "end_time": "30.42"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "30.42",
+              "end_time": "30.59"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "30.59",
+              "end_time": "30.989"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "30.989",
+              "end_time": "31.27"
+            }
+          ]
+        },
+        {
+          "start_time": "32.18",
+          "end_time": "39.81",
+          "speaker_label": "spk_0",
+          "items": [
+            {
+              "speaker_label": "spk_0",
+              "start_time": "32.34",
+              "end_time": "32.619"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "32.619",
+              "end_time": "33.529"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "33.93",
+              "end_time": "34.49"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "34.49",
+              "end_time": "34.659"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "34.659",
+              "end_time": "34.74"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "34.74",
+              "end_time": "35.06"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "35.06",
+              "end_time": "35.419"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "35.419",
+              "end_time": "35.819"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "35.819",
+              "end_time": "35.979"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "35.979",
+              "end_time": "36.29"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "36.819",
+              "end_time": "37.009"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "37.009",
+              "end_time": "37.369"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "37.369",
+              "end_time": "37.619"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "37.619",
+              "end_time": "38.02"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "38.02",
+              "end_time": "38.49"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "38.49",
+              "end_time": "38.68"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "39.259",
+              "end_time": "39.54"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "39.54",
+              "end_time": "39.779"
+            }
+          ]
+        },
+        {
+          "start_time": "40.909",
+          "end_time": "48.209",
+          "speaker_label": "spk_0",
+          "items": [
+            {
+              "speaker_label": "spk_0",
+              "start_time": "41.069",
+              "end_time": "41.27"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "41.27",
+              "end_time": "41.939"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "42.27",
+              "end_time": "42.509"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "42.509",
+              "end_time": "42.59"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "42.59",
+              "end_time": "42.75"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "42.75",
+              "end_time": "42.869"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "42.869",
+              "end_time": "42.979"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "42.979",
+              "end_time": "43.389"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "43.389",
+              "end_time": "44.099"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "44.099",
+              "end_time": "44.459"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "45.069",
+              "end_time": "45.27"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "45.27",
+              "end_time": "45.669"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "45.669",
+              "end_time": "46.24"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "46.24",
+              "end_time": "46.349"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "46.349",
+              "end_time": "46.5"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "46.5",
+              "end_time": "46.75"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "46.75",
+              "end_time": "46.83"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "46.83",
+              "end_time": "47.029"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "47.029",
+              "end_time": "47.24"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "47.24",
+              "end_time": "47.299"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "47.299",
+              "end_time": "47.549"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "47.549",
+              "end_time": "47.669"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "47.669",
+              "end_time": "47.909"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "47.909",
+              "end_time": "48.069"
+            }
+          ]
+        },
+        {
+          "start_time": "48.83",
+          "end_time": "60.779",
+          "speaker_label": "spk_0",
+          "items": [
+            {
+              "speaker_label": "spk_0",
+              "start_time": "49.15",
+              "end_time": "49.159"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "49.159",
+              "end_time": "49.169"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "49.169",
+              "end_time": "49.209"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "49.209",
+              "end_time": "49.229"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "49.229",
+              "end_time": "49.24"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "52.43",
+              "end_time": "52.63"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "52.63",
+              "end_time": "52.909"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "52.909",
+              "end_time": "53.189"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "53.189",
+              "end_time": "53.27"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "53.27",
+              "end_time": "53.389"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "53.389",
+              "end_time": "53.75"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "53.75",
+              "end_time": "54.299"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "54.63",
+              "end_time": "54.95"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "54.95",
+              "end_time": "55.229"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "55.229",
+              "end_time": "55.419"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "55.419",
+              "end_time": "55.9"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "55.9",
+              "end_time": "56.06"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "56.06",
+              "end_time": "56.619"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "56.95",
+              "end_time": "57.069"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "57.069",
+              "end_time": "57.509"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "57.509",
+              "end_time": "58.22"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "58.22",
+              "end_time": "58.229"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "58.229",
+              "end_time": "59.029"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "59.029",
+              "end_time": "59.229"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "59.229",
+              "end_time": "59.43"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "59.43",
+              "end_time": "60.06"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "60.06",
+              "end_time": "60.31"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "60.31",
+              "end_time": "60.75"
+            }
+          ]
+        },
+        {
+          "start_time": "61.38",
+          "end_time": "72.099",
+          "speaker_label": "spk_0",
+          "items": [
+            {
+              "speaker_label": "spk_0",
+              "start_time": "61.54",
+              "end_time": "61.93"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "61.939",
+              "end_time": "62.419"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "62.419",
+              "end_time": "62.569"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "62.58",
+              "end_time": "62.779"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "62.779",
+              "end_time": "63.09"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "63.09",
+              "end_time": "63.34"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "63.34",
+              "end_time": "63.65"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "63.65",
+              "end_time": "63.74"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "63.86",
+              "end_time": "64.489"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "64.9",
+              "end_time": "65.19"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "65.19",
+              "end_time": "65.569"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "66.059",
+              "end_time": "66.54"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "66.54",
+              "end_time": "67.089"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "67.089",
+              "end_time": "67.339"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "67.339",
+              "end_time": "67.459"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "67.459",
+              "end_time": "67.69"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "67.69",
+              "end_time": "67.879"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "67.879",
+              "end_time": "68.069"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "68.069",
+              "end_time": "68.65"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "69.3",
+              "end_time": "69.58"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "69.58",
+              "end_time": "69.66"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "69.66",
+              "end_time": "69.9"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "69.9",
+              "end_time": "70.139"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "70.139",
+              "end_time": "70.339"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "70.339",
+              "end_time": "70.819"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "70.819",
+              "end_time": "71.01"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "71.01",
+              "end_time": "71.18"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "71.18",
+              "end_time": "71.43"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "71.43",
+              "end_time": "71.79"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "71.79",
+              "end_time": "71.94"
+            }
+          ]
+        },
+        {
+          "start_time": "72.919",
+          "end_time": "97.919",
+          "speaker_label": "spk_0",
+          "items": [
+            {
+              "speaker_label": "spk_0",
+              "start_time": "72.93",
+              "end_time": "72.94"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "72.94",
+              "end_time": "72.97"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "72.97",
+              "end_time": "72.98"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "72.98",
+              "end_time": "72.989"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "72.989",
+              "end_time": "73.0"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "75.279",
+              "end_time": "75.68"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "75.68",
+              "end_time": "76.04"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "76.839",
+              "end_time": "77.04"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "77.04",
+              "end_time": "77.239"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "77.239",
+              "end_time": "77.489"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "77.519",
+              "end_time": "77.76"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "77.76",
+              "end_time": "77.849"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "77.849",
+              "end_time": "77.959"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "77.959",
+              "end_time": "78.25"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "78.919",
+              "end_time": "79.23"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "79.23",
+              "end_time": "79.319"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "79.319",
+              "end_time": "79.48"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "79.48",
+              "end_time": "79.599"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "79.599",
+              "end_time": "79.639"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "79.72",
+              "end_time": "80.19"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "80.559",
+              "end_time": "80.879"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "80.879",
+              "end_time": "81.0"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "81.0",
+              "end_time": "81.709"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "81.709",
+              "end_time": "82.199"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "82.199",
+              "end_time": "82.36"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "82.36",
+              "end_time": "82.4"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "82.44",
+              "end_time": "82.559"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "82.559",
+              "end_time": "82.68"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "82.68",
+              "end_time": "83.279"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "83.279",
+              "end_time": "83.44"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "83.44",
+              "end_time": "83.519"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "83.519",
+              "end_time": "83.709"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "83.709",
+              "end_time": "83.76"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "83.76",
+              "end_time": "84.0"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "84.0",
+              "end_time": "84.139"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "84.139",
+              "end_time": "84.51"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "84.51",
+              "end_time": "84.68"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "85.16",
+              "end_time": "85.33"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "85.33",
+              "end_time": "85.36"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "85.36",
+              "end_time": "85.48"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "85.48",
+              "end_time": "85.83"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "85.83",
+              "end_time": "85.919"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "85.919",
+              "end_time": "85.959"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "85.959",
+              "end_time": "86.239"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "86.239",
+              "end_time": "86.79"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "87.04",
+              "end_time": "87.169"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "87.169",
+              "end_time": "87.519"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "87.519",
+              "end_time": "87.73"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "87.73",
+              "end_time": "88.269"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "88.72",
+              "end_time": "89.16"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "89.16",
+              "end_time": "89.589"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "89.589",
+              "end_time": "89.87"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "89.87",
+              "end_time": "90.279"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "90.279",
+              "end_time": "90.55"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "90.72",
+              "end_time": "91.0"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "91.0",
+              "end_time": "91.269"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "91.269",
+              "end_time": "91.44"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "91.44",
+              "end_time": "91.529"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "91.68",
+              "end_time": "91.839"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "91.839",
+              "end_time": "92.0"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "92.0",
+              "end_time": "92.239"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "92.239",
+              "end_time": "92.519"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "92.519",
+              "end_time": "92.72"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "92.72",
+              "end_time": "93.0"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "93.0",
+              "end_time": "93.29"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "94.4",
+              "end_time": "94.529"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "94.529",
+              "end_time": "94.599"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "94.72",
+              "end_time": "94.879"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "94.879",
+              "end_time": "95.04"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "95.04",
+              "end_time": "95.269"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "95.269",
+              "end_time": "95.43"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "95.44",
+              "end_time": "95.559"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "95.559",
+              "end_time": "95.589"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "95.589",
+              "end_time": "95.769"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "96.4",
+              "end_time": "96.919"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "96.919",
+              "end_time": "97.04"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "97.04",
+              "end_time": "97.889"
+            }
+          ]
+        },
+        {
+          "start_time": "98.47",
+          "end_time": "107.66",
+          "speaker_label": "spk_0",
+          "items": [
+            {
+              "speaker_label": "spk_0",
+              "start_time": "98.75",
+              "end_time": "99.019"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "99.019",
+              "end_time": "99.23"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "99.23",
+              "end_time": "99.73"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "99.73",
+              "end_time": "99.75"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "99.75",
+              "end_time": "99.989"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "99.989",
+              "end_time": "100.319"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "100.68",
+              "end_time": "100.87"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "100.87",
+              "end_time": "100.94"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "100.94",
+              "end_time": "101.199"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "101.199",
+              "end_time": "101.23"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "101.23",
+              "end_time": "101.779"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "103.12",
+              "end_time": "103.129"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "103.129",
+              "end_time": "103.139"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "103.139",
+              "end_time": "103.15"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "103.15",
+              "end_time": "103.449"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "103.449",
+              "end_time": "103.9"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "103.9",
+              "end_time": "104.12"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "104.12",
+              "end_time": "104.23"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "104.269",
+              "end_time": "104.379"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "104.379",
+              "end_time": "104.47"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "104.47",
+              "end_time": "104.989"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "104.989",
+              "end_time": "105.58"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "105.91",
+              "end_time": "106.029"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "106.029",
+              "end_time": "106.15"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "106.15",
+              "end_time": "106.58"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "106.91",
+              "end_time": "107.029"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "107.029",
+              "end_time": "107.629"
+            }
+          ]
+        },
+        {
+          "start_time": "107.86",
+          "end_time": "137.589",
+          "speaker_label": "spk_0",
+          "items": [
+            {
+              "speaker_label": "spk_0",
+              "start_time": "107.93",
+              "end_time": "108.33"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "108.33",
+              "end_time": "108.339"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "108.339",
+              "end_time": "108.73"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "108.73",
+              "end_time": "108.94"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "108.94",
+              "end_time": "109.22"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "109.22",
+              "end_time": "109.41"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "109.41",
+              "end_time": "109.599"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "109.599",
+              "end_time": "109.69"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "109.69",
+              "end_time": "109.86"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "109.86",
+              "end_time": "110.29"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "110.62",
+              "end_time": "110.669"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "110.669",
+              "end_time": "110.779"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "110.819",
+              "end_time": "111.019"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "111.019",
+              "end_time": "111.41"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "111.86",
+              "end_time": "112.339"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "112.339",
+              "end_time": "112.569"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "112.9",
+              "end_time": "113.029"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "113.029",
+              "end_time": "113.18"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "113.18",
+              "end_time": "113.459"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "113.459",
+              "end_time": "113.54"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "113.54",
+              "end_time": "114.3"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "114.3",
+              "end_time": "114.5"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "114.5",
+              "end_time": "114.58"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "114.58",
+              "end_time": "114.69"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "114.69",
+              "end_time": "115.059"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "115.059",
+              "end_time": "115.22"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "115.22",
+              "end_time": "115.449"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "115.449",
+              "end_time": "115.58"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "115.58",
+              "end_time": "115.819"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "115.819",
+              "end_time": "116.209"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "116.699",
+              "end_time": "116.819"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "116.819",
+              "end_time": "117.059"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "117.059",
+              "end_time": "117.25"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "117.25",
+              "end_time": "117.33"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "117.33",
+              "end_time": "117.459"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "117.459",
+              "end_time": "117.97"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "118.019",
+              "end_time": "118.3"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "118.3",
+              "end_time": "118.61"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "118.61",
+              "end_time": "118.62"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "118.62",
+              "end_time": "119.37"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "119.66",
+              "end_time": "119.699"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "119.699",
+              "end_time": "119.779"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "119.819",
+              "end_time": "119.91"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "119.91",
+              "end_time": "120.019"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "120.019",
+              "end_time": "120.449"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "120.699",
+              "end_time": "120.739"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "120.739",
+              "end_time": "120.819"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "120.9",
+              "end_time": "121.129"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "121.129",
+              "end_time": "121.3"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "121.3",
+              "end_time": "121.589"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "121.589",
+              "end_time": "121.94"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "122.059",
+              "end_time": "122.099"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "122.099",
+              "end_time": "122.22"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "122.22",
+              "end_time": "122.58"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "122.58",
+              "end_time": "122.779"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "122.779",
+              "end_time": "122.989"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "122.989",
+              "end_time": "123.099"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "123.099",
+              "end_time": "123.86"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "124.05",
+              "end_time": "124.139"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "124.139",
+              "end_time": "124.26"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "124.3",
+              "end_time": "124.419"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "124.419",
+              "end_time": "124.58"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "124.58",
+              "end_time": "124.739"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "124.739",
+              "end_time": "125.099"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "125.099",
+              "end_time": "125.449"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "125.779",
+              "end_time": "125.98"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "125.98",
+              "end_time": "126.22"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "126.22",
+              "end_time": "126.629"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "126.629",
+              "end_time": "126.699"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "126.709",
+              "end_time": "126.9"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "126.9",
+              "end_time": "127.16"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "127.16",
+              "end_time": "127.339"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "127.339",
+              "end_time": "127.43"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "127.43",
+              "end_time": "127.9"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "127.9",
+              "end_time": "128.41"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "128.41",
+              "end_time": "128.74"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "128.74",
+              "end_time": "129.169"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "129.509",
+              "end_time": "129.58"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "129.58",
+              "end_time": "129.66"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "129.74",
+              "end_time": "130.02"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "130.02",
+              "end_time": "130.33"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "130.66",
+              "end_time": "131.1"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "131.1",
+              "end_time": "131.85"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "132.22",
+              "end_time": "132.5"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "132.5",
+              "end_time": "133.169"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "133.169",
+              "end_time": "133.49"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "133.49",
+              "end_time": "133.669"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "133.669",
+              "end_time": "133.94"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "133.94",
+              "end_time": "134.059"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "134.059",
+              "end_time": "134.199"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "134.66",
+              "end_time": "134.74"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "134.74",
+              "end_time": "134.82"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "134.82",
+              "end_time": "135.369"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "135.619",
+              "end_time": "135.94"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "135.94",
+              "end_time": "136.289"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "136.58",
+              "end_time": "136.74"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "136.74",
+              "end_time": "137.1"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "137.1",
+              "end_time": "137.339"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "137.339",
+              "end_time": "137.559"
+            }
+          ]
+        },
+        {
+          "start_time": "138.41",
+          "end_time": "141.339",
+          "speaker_label": "spk_0",
+          "items": [
+            {
+              "speaker_label": "spk_0",
+              "start_time": "138.61",
+              "end_time": "138.929"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "138.929",
+              "end_time": "139.24"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "139.41",
+              "end_time": "139.57"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "139.57",
+              "end_time": "140.1"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "140.1",
+              "end_time": "140.289"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "140.289",
+              "end_time": "140.41"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "140.41",
+              "end_time": "140.529"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "140.529",
+              "end_time": "140.919"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "140.919",
+              "end_time": "141.089"
+            },
+            {
+              "speaker_label": "spk_0",
+              "start_time": "141.089",
+              "end_time": "141.309"
+            }
+          ]
+        }
+      ],
+      "channel_label": "ch_0",
+      "speakers": 1
+    },
+    "items": [
+      {
+        "id": 0,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.904",
+            "content": "你"
+          }
+        ],
+        "start_time": "1.549",
+        "end_time": "1.559",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 1,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.959",
+            "content": "知道"
+          }
+        ],
+        "start_time": "1.899",
+        "end_time": "2.299",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 2,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.959",
+            "content": "世界"
+          }
+        ],
+        "start_time": "2.42",
+        "end_time": "2.66",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 3,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.941",
+            "content": "上"
+          }
+        ],
+        "start_time": "2.66",
+        "end_time": "2.98",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 4,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.996",
+            "content": "最大"
+          }
+        ],
+        "start_time": "2.98",
+        "end_time": "3.14",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 5,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.986",
+            "content": "的"
+          }
+        ],
+        "start_time": "3.14",
+        "end_time": "3.259",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 6,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.985",
+            "content": "减肥药"
+          }
+        ],
+        "start_time": "3.259",
+        "end_time": "3.94",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 7,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.995",
+            "content": "公司"
+          }
+        ],
+        "start_time": "3.94",
+        "end_time": "4.059",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 8,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.986",
+            "content": "是"
+          }
+        ],
+        "start_time": "4.059",
+        "end_time": "4.11",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 9,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.859",
+            "content": "哪个"
+          }
+        ],
+        "start_time": "4.11",
+        "end_time": "4.469",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 10,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.989",
+            "content": "公司"
+          }
+        ],
+        "start_time": "4.469",
+        "end_time": "4.619",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 11,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.824",
+            "content": "吗"
+          }
+        ],
+        "start_time": "4.619",
+        "end_time": "4.67",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 12,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": "?"
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 13,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.992",
+            "content": "是"
+          }
+        ],
+        "start_time": "5.809",
+        "end_time": "6.099",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 14,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.923",
+            "content": "诺"
+          }
+        ],
+        "start_time": "6.099",
+        "end_time": "6.44",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 15,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.626",
+            "content": "和"
+          }
+        ],
+        "start_time": "6.44",
+        "end_time": "6.449",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 16,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.349",
+            "content": "诺德"
+          }
+        ],
+        "start_time": "6.449",
+        "end_time": "6.82",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 17,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.981",
+            "content": "和"
+          }
+        ],
+        "start_time": "6.82",
+        "end_time": "6.98",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 18,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.621",
+            "content": "里兰"
+          }
+        ],
+        "start_time": "6.98",
+        "end_time": "7.55",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 19,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.969",
+            "content": "你"
+          }
+        ],
+        "start_time": "8.18",
+        "end_time": "8.26",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 20,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.877",
+            "content": "知道"
+          }
+        ],
+        "start_time": "8.26",
+        "end_time": "8.34",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 21,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.599",
+            "content": "他值"
+          }
+        ],
+        "start_time": "8.34",
+        "end_time": "8.569",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 22,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.996",
+            "content": "多少"
+          }
+        ],
+        "start_time": "8.569",
+        "end_time": "8.819",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 23,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.991",
+            "content": "钱"
+          }
+        ],
+        "start_time": "8.819",
+        "end_time": "8.97",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 24,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.9",
+            "content": "吗"
+          }
+        ],
+        "start_time": "8.97",
+        "end_time": "9.06",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 25,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": "?"
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 26,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.891",
+            "content": "诺"
+          }
+        ],
+        "start_time": "10.22",
+        "end_time": "10.449",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 27,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.692",
+            "content": "和"
+          }
+        ],
+        "start_time": "10.449",
+        "end_time": "10.46",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 28,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.356",
+            "content": "诺德"
+          }
+        ],
+        "start_time": "10.46",
+        "end_time": "10.77",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 29,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.636",
+            "content": "里兰"
+          }
+        ],
+        "start_time": "10.77",
+        "end_time": "11.06",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 30,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.976",
+            "content": "曾经"
+          }
+        ],
+        "start_time": "11.06",
+        "end_time": "11.329",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 31,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.946",
+            "content": "一度"
+          }
+        ],
+        "start_time": "11.329",
+        "end_time": "11.609",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 32,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.987",
+            "content": "将近"
+          }
+        ],
+        "start_time": "11.609",
+        "end_time": "11.85",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 33,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.971",
+            "content": "一万"
+          }
+        ],
+        "start_time": "11.85",
+        "end_time": "12.039",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 34,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.939",
+            "content": "亿美金"
+          }
+        ],
+        "start_time": "12.039",
+        "end_time": "12.77",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 35,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.991",
+            "content": "但是"
+          }
+        ],
+        "start_time": "13.26",
+        "end_time": "13.489",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 36,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.994",
+            "content": "呢"
+          }
+        ],
+        "start_time": "13.489",
+        "end_time": "13.989",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 37,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.981",
+            "content": "这个"
+          }
+        ],
+        "start_time": "14.42",
+        "end_time": "15.109",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 38,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.254",
+            "content": "斯美格鲁泰"
+          }
+        ],
+        "start_time": "15.229",
+        "end_time": "15.939",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 39,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.731",
+            "content": "啊"
+          }
+        ],
+        "start_time": "15.939",
+        "end_time": "16.37",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 40,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.974",
+            "content": "这个"
+          }
+        ],
+        "start_time": "16.729",
+        "end_time": "17.02",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 41,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.84",
+            "content": "世界"
+          }
+        ],
+        "start_time": "17.02",
+        "end_time": "17.18",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 42,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.752",
+            "content": "上"
+          }
+        ],
+        "start_time": "17.18",
+        "end_time": "17.54",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 43,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.983",
+            "content": "原来"
+          }
+        ],
+        "start_time": "17.54",
+        "end_time": "17.809",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 44,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.957",
+            "content": "最牛"
+          }
+        ],
+        "start_time": "17.809",
+        "end_time": "17.989",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 45,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.979",
+            "content": "逼"
+          }
+        ],
+        "start_time": "17.989",
+        "end_time": "18.11",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 46,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.993",
+            "content": "的"
+          }
+        ],
+        "start_time": "18.11",
+        "end_time": "18.18",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 47,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.992",
+            "content": "减肥药"
+          }
+        ],
+        "start_time": "18.18",
+        "end_time": "18.86",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 48,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.995",
+            "content": "最近"
+          }
+        ],
+        "start_time": "18.86",
+        "end_time": "19.329",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 49,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.997",
+            "content": "开始"
+          }
+        ],
+        "start_time": "20.02",
+        "end_time": "20.26",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 50,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.987",
+            "content": "暴跌"
+          }
+        ],
+        "start_time": "20.26",
+        "end_time": "20.62",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 51,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.996",
+            "content": "了"
+          }
+        ],
+        "start_time": "20.62",
+        "end_time": "20.819",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 52,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.918",
+            "content": "你"
+          }
+        ],
+        "start_time": "21.68",
+        "end_time": "21.69",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 53,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.717",
+            "content": "能"
+          }
+        ],
+        "start_time": "21.84",
+        "end_time": "21.93",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 54,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.574",
+            "content": "为啥"
+          }
+        ],
+        "start_time": "21.93",
+        "end_time": "22.139",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 55,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.977",
+            "content": "暴跌"
+          }
+        ],
+        "start_time": "22.139",
+        "end_time": "22.459",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 56,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.943",
+            "content": "吗"
+          }
+        ],
+        "start_time": "22.459",
+        "end_time": "22.549",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 57,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": "?"
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 58,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.859",
+            "content": "是因为"
+          }
+        ],
+        "start_time": "23.7",
+        "end_time": "23.909",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 59,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.766",
+            "content": "它"
+          }
+        ],
+        "start_time": "23.909",
+        "end_time": "24.0",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 60,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.959",
+            "content": "的"
+          }
+        ],
+        "start_time": "24.0",
+        "end_time": "24.1",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 61,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.944",
+            "content": "销售额"
+          }
+        ],
+        "start_time": "24.1",
+        "end_time": "24.67",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 62,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.589",
+            "content": "不足"
+          }
+        ],
+        "start_time": "24.67",
+        "end_time": "24.829",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 63,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.786",
+            "content": "预期"
+          }
+        ],
+        "start_time": "24.829",
+        "end_time": "25.379",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 64,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.979",
+            "content": "就是"
+          }
+        ],
+        "start_time": "26.11",
+        "end_time": "26.629",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 65,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.984",
+            "content": "现在"
+          }
+        ],
+        "start_time": "26.629",
+        "end_time": "26.959",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 66,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.916",
+            "content": "呢"
+          }
+        ],
+        "start_time": "26.959",
+        "end_time": "27.229",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 67,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.966",
+            "content": "股价"
+          }
+        ],
+        "start_time": "27.229",
+        "end_time": "27.62",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 68,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.951",
+            "content": "呢"
+          }
+        ],
+        "start_time": "27.62",
+        "end_time": "27.67",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 69,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": "?"
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 70,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.9",
+            "content": "腰斩"
+          }
+        ],
+        "start_time": "27.69",
+        "end_time": "28.03",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 71,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.559",
+            "content": "再"
+          }
+        ],
+        "start_time": "28.03",
+        "end_time": "28.1",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 72,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.898",
+            "content": "腰"
+          }
+        ],
+        "start_time": "28.1",
+        "end_time": "28.27",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 73,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.773",
+            "content": "斩"
+          }
+        ],
+        "start_time": "28.27",
+        "end_time": "28.53",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 74,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.689",
+            "content": "打了个"
+          }
+        ],
+        "start_time": "29.149",
+        "end_time": "29.79",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 75,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.986",
+            "content": "三点"
+          }
+        ],
+        "start_time": "29.79",
+        "end_time": "30.12",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 76,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.993",
+            "content": "五折"
+          }
+        ],
+        "start_time": "30.12",
+        "end_time": "30.42",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 77,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.994",
+            "content": "到"
+          }
+        ],
+        "start_time": "30.42",
+        "end_time": "30.59",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 78,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.997",
+            "content": "四折"
+          }
+        ],
+        "start_time": "30.59",
+        "end_time": "30.989",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 79,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.827",
+            "content": "之间。"
+          }
+        ],
+        "start_time": "30.989",
+        "end_time": "31.27",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 80,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.999",
+            "content": "从"
+          }
+        ],
+        "start_time": "32.34",
+        "end_time": "32.619",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 81,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.995",
+            "content": "这个"
+          }
+        ],
+        "start_time": "32.619",
+        "end_time": "33.529",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 82,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.799",
+            "content": "六七千个"
+          }
+        ],
+        "start_time": "33.93",
+        "end_time": "34.49",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 83,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.88",
+            "content": "亿"
+          }
+        ],
+        "start_time": "34.49",
+        "end_time": "34.659",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 84,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.843",
+            "content": "现在"
+          }
+        ],
+        "start_time": "34.659",
+        "end_time": "34.74",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 85,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.908",
+            "content": "跌到"
+          }
+        ],
+        "start_time": "34.74",
+        "end_time": "35.06",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 86,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.986",
+            "content": "了"
+          }
+        ],
+        "start_time": "35.06",
+        "end_time": "35.419",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 87,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.949",
+            "content": "两千个"
+          }
+        ],
+        "start_time": "35.419",
+        "end_time": "35.819",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 88,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.994",
+            "content": "亿"
+          }
+        ],
+        "start_time": "35.819",
+        "end_time": "35.979",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 89,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.946",
+            "content": "了"
+          }
+        ],
+        "start_time": "35.979",
+        "end_time": "36.29",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 90,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.295",
+            "content": "增发"
+          }
+        ],
+        "start_time": "36.819",
+        "end_time": "37.009",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 91,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.936",
+            "content": "了"
+          }
+        ],
+        "start_time": "37.009",
+        "end_time": "37.369",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 92,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.925",
+            "content": "有"
+          }
+        ],
+        "start_time": "37.369",
+        "end_time": "37.619",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 93,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.981",
+            "content": "四千多"
+          }
+        ],
+        "start_time": "37.619",
+        "end_time": "38.02",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 94,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.986",
+            "content": "亿美金"
+          }
+        ],
+        "start_time": "38.02",
+        "end_time": "38.49",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 95,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.676",
+            "content": "啊"
+          }
+        ],
+        "start_time": "38.49",
+        "end_time": "38.68",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 96,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.996",
+            "content": "恐怖"
+          }
+        ],
+        "start_time": "39.259",
+        "end_time": "39.54",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 97,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.996",
+            "content": "吧"
+          }
+        ],
+        "start_time": "39.54",
+        "end_time": "39.779",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 98,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.995",
+            "content": "那"
+          }
+        ],
+        "start_time": "41.069",
+        "end_time": "41.27",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 99,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.997",
+            "content": "如果说"
+          }
+        ],
+        "start_time": "41.27",
+        "end_time": "41.939",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 100,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.998",
+            "content": "世界"
+          }
+        ],
+        "start_time": "42.27",
+        "end_time": "42.509",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 101,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.993",
+            "content": "上"
+          }
+        ],
+        "start_time": "42.509",
+        "end_time": "42.59",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 102,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.999",
+            "content": "最"
+          }
+        ],
+        "start_time": "42.59",
+        "end_time": "42.75",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 103,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.991",
+            "content": "牛"
+          }
+        ],
+        "start_time": "42.75",
+        "end_time": "42.869",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 104,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.987",
+            "content": "逼"
+          }
+        ],
+        "start_time": "42.869",
+        "end_time": "42.979",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 105,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.999",
+            "content": "的"
+          }
+        ],
+        "start_time": "42.979",
+        "end_time": "43.389",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 106,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.989",
+            "content": "减肥药"
+          }
+        ],
+        "start_time": "43.389",
+        "end_time": "44.099",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 107,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.998",
+            "content": "公司"
+          }
+        ],
+        "start_time": "44.099",
+        "end_time": "44.459",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 108,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.999",
+            "content": "还有"
+          }
+        ],
+        "start_time": "45.069",
+        "end_time": "45.27",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 109,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.995",
+            "content": "这个"
+          }
+        ],
+        "start_time": "45.27",
+        "end_time": "45.669",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 110,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.996",
+            "content": "糖尿病"
+          }
+        ],
+        "start_time": "45.669",
+        "end_time": "46.24",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 111,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.997",
+            "content": "公司"
+          }
+        ],
+        "start_time": "46.24",
+        "end_time": "46.349",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 112,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.998",
+            "content": "都"
+          }
+        ],
+        "start_time": "46.349",
+        "end_time": "46.5",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 113,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.997",
+            "content": "这样"
+          }
+        ],
+        "start_time": "46.5",
+        "end_time": "46.75",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 114,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.981",
+            "content": "你"
+          }
+        ],
+        "start_time": "46.75",
+        "end_time": "46.83",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 115,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.987",
+            "content": "觉得"
+          }
+        ],
+        "start_time": "46.83",
+        "end_time": "47.029",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 116,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.985",
+            "content": "不牛"
+          }
+        ],
+        "start_time": "47.029",
+        "end_time": "47.24",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 117,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.983",
+            "content": "逼"
+          }
+        ],
+        "start_time": "47.24",
+        "end_time": "47.299",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 118,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.994",
+            "content": "的"
+          }
+        ],
+        "start_time": "47.299",
+        "end_time": "47.549",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 119,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "1.0",
+            "content": "公司"
+          }
+        ],
+        "start_time": "47.549",
+        "end_time": "47.669",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 120,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.998",
+            "content": "会"
+          }
+        ],
+        "start_time": "47.669",
+        "end_time": "47.909",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 121,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.997",
+            "content": "怎么样"
+          }
+        ],
+        "start_time": "47.909",
+        "end_time": "48.069",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 122,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": "?"
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 123,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.933",
+            "content": "会"
+          }
+        ],
+        "start_time": "49.15",
+        "end_time": "49.159",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 124,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.994",
+            "content": "不会"
+          }
+        ],
+        "start_time": "49.159",
+        "end_time": "49.169",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 125,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.704",
+            "content": "跌得"
+          }
+        ],
+        "start_time": "49.169",
+        "end_time": "49.209",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 126,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.993",
+            "content": "更惨"
+          }
+        ],
+        "start_time": "49.209",
+        "end_time": "49.229",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 127,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.873",
+            "content": "呀"
+          }
+        ],
+        "start_time": "49.229",
+        "end_time": "49.24",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 128,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": "?"
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 129,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.986",
+            "content": "对"
+          }
+        ],
+        "start_time": "52.43",
+        "end_time": "52.63",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 130,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.728",
+            "content": "呀"
+          }
+        ],
+        "start_time": "52.63",
+        "end_time": "52.909",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 131,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.991",
+            "content": "所以"
+          }
+        ],
+        "start_time": "52.909",
+        "end_time": "53.189",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 132,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.957",
+            "content": "呢"
+          }
+        ],
+        "start_time": "53.189",
+        "end_time": "53.27",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 133,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.978",
+            "content": "你"
+          }
+        ],
+        "start_time": "53.27",
+        "end_time": "53.389",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 134,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.988",
+            "content": "看"
+          }
+        ],
+        "start_time": "53.389",
+        "end_time": "53.75",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 135,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.986",
+            "content": "我们"
+          }
+        ],
+        "start_time": "53.75",
+        "end_time": "54.299",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 136,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.971",
+            "content": "对比"
+          }
+        ],
+        "start_time": "54.63",
+        "end_time": "54.95",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 137,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.955",
+            "content": "一下"
+          }
+        ],
+        "start_time": "54.95",
+        "end_time": "55.229",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 138,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.924",
+            "content": "创"
+          }
+        ],
+        "start_time": "55.229",
+        "end_time": "55.419",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 139,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.375",
+            "content": "医药"
+          }
+        ],
+        "start_time": "55.419",
+        "end_time": "55.9",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 140,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.962",
+            "content": "公司"
+          }
+        ],
+        "start_time": "55.9",
+        "end_time": "56.06",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 141,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.956",
+            "content": "啊"
+          }
+        ],
+        "start_time": "56.06",
+        "end_time": "56.619",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 142,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.985",
+            "content": "你"
+          }
+        ],
+        "start_time": "56.95",
+        "end_time": "57.069",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 143,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.981",
+            "content": "看"
+          }
+        ],
+        "start_time": "57.069",
+        "end_time": "57.509",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 144,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.121",
+            "content": "多多得"
+          }
+        ],
+        "start_time": "57.509",
+        "end_time": "58.22",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 145,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.962",
+            "content": "现在"
+          }
+        ],
+        "start_time": "58.22",
+        "end_time": "58.229",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 146,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.941",
+            "content": "呢"
+          }
+        ],
+        "start_time": "58.229",
+        "end_time": "59.029",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 147,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.482",
+            "content": "pe"
+          }
+        ],
+        "start_time": "59.029",
+        "end_time": "59.229",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 148,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.899",
+            "content": "呢"
+          }
+        ],
+        "start_time": "59.229",
+        "end_time": "59.43",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 149,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.982",
+            "content": "只有"
+          }
+        ],
+        "start_time": "59.43",
+        "end_time": "60.06",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 150,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.983",
+            "content": "十三倍"
+          }
+        ],
+        "start_time": "60.06",
+        "end_time": "60.31",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 151,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.984",
+            "content": "左右"
+          }
+        ],
+        "start_time": "60.31",
+        "end_time": "60.75",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 152,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.994",
+            "content": "然后"
+          }
+        ],
+        "start_time": "61.54",
+        "end_time": "61.93",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 153,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.063",
+            "content": "默沙东"
+          }
+        ],
+        "start_time": "61.939",
+        "end_time": "62.419",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 154,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.941",
+            "content": "啊"
+          }
+        ],
+        "start_time": "62.419",
+        "end_time": "62.569",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 155,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": ","
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 156,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.998",
+            "content": "也"
+          }
+        ],
+        "start_time": "62.58",
+        "end_time": "62.779",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 157,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.995",
+            "content": "是"
+          }
+        ],
+        "start_time": "62.779",
+        "end_time": "63.09",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 158,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.837",
+            "content": "制药"
+          }
+        ],
+        "start_time": "63.09",
+        "end_time": "63.34",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 159,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.908",
+            "content": "巨头"
+          }
+        ],
+        "start_time": "63.34",
+        "end_time": "63.65",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 160,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.933",
+            "content": "啊"
+          }
+        ],
+        "start_time": "63.65",
+        "end_time": "63.74",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 161,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": ","
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 162,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.995",
+            "content": "只有"
+          }
+        ],
+        "start_time": "63.86",
+        "end_time": "64.489",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 163,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.996",
+            "content": "十二倍"
+          }
+        ],
+        "start_time": "64.9",
+        "end_time": "65.19",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 164,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "1.0",
+            "content": "左右"
+          }
+        ],
+        "start_time": "65.19",
+        "end_time": "65.569",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 165,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": ","
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 166,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "1.0",
+            "content": "包括"
+          }
+        ],
+        "start_time": "66.059",
+        "end_time": "66.54",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 167,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.512",
+            "content": "再生远"
+          }
+        ],
+        "start_time": "66.54",
+        "end_time": "67.089",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 168,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.948",
+            "content": "公司"
+          }
+        ],
+        "start_time": "67.089",
+        "end_time": "67.339",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 169,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.992",
+            "content": "也"
+          }
+        ],
+        "start_time": "67.339",
+        "end_time": "67.459",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 170,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.81",
+            "content": "就"
+          }
+        ],
+        "start_time": "67.459",
+        "end_time": "67.69",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 171,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.995",
+            "content": "十二"
+          }
+        ],
+        "start_time": "67.69",
+        "end_time": "67.879",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 172,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.644",
+            "content": "三倍"
+          }
+        ],
+        "start_time": "67.879",
+        "end_time": "68.069",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 173,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.923",
+            "content": "左右。"
+          }
+        ],
+        "start_time": "68.069",
+        "end_time": "68.65",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 174,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.995",
+            "content": "但是"
+          }
+        ],
+        "start_time": "69.3",
+        "end_time": "69.58",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 175,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.998",
+            "content": "你"
+          }
+        ],
+        "start_time": "69.58",
+        "end_time": "69.66",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 176,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.999",
+            "content": "知道"
+          }
+        ],
+        "start_time": "69.66",
+        "end_time": "69.9",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 177,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.999",
+            "content": "中国"
+          }
+        ],
+        "start_time": "69.9",
+        "end_time": "70.139",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 178,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.995",
+            "content": "的"
+          }
+        ],
+        "start_time": "70.139",
+        "end_time": "70.339",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 179,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.587",
+            "content": "畅销"
+          }
+        ],
+        "start_time": "70.339",
+        "end_time": "70.819",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 180,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.999",
+            "content": "公司"
+          }
+        ],
+        "start_time": "70.819",
+        "end_time": "71.01",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 181,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.98",
+            "content": "现在"
+          }
+        ],
+        "start_time": "71.01",
+        "end_time": "71.18",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 182,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.24",
+            "content": "雇值"
+          }
+        ],
+        "start_time": "71.18",
+        "end_time": "71.43",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 183,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.979",
+            "content": "多少倍"
+          }
+        ],
+        "start_time": "71.43",
+        "end_time": "71.79",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 184,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.921",
+            "content": "吗"
+          }
+        ],
+        "start_time": "71.79",
+        "end_time": "71.94",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 185,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": "?"
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 186,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.951",
+            "content": "中国"
+          }
+        ],
+        "start_time": "72.93",
+        "end_time": "72.94",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 187,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.673",
+            "content": "创业"
+          }
+        ],
+        "start_time": "72.94",
+        "end_time": "72.97",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 188,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.879",
+            "content": "公司"
+          }
+        ],
+        "start_time": "72.97",
+        "end_time": "72.98",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 189,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.961",
+            "content": "现在"
+          }
+        ],
+        "start_time": "72.98",
+        "end_time": "72.989",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 190,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.981",
+            "content": "都"
+          }
+        ],
+        "start_time": "72.989",
+        "end_time": "73.0",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 191,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.949",
+            "content": "亏了"
+          }
+        ],
+        "start_time": "75.279",
+        "end_time": "75.68",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 192,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.993",
+            "content": "好多年"
+          }
+        ],
+        "start_time": "75.68",
+        "end_time": "76.04",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 193,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": ","
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 194,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.968",
+            "content": "亏"
+          }
+        ],
+        "start_time": "76.839",
+        "end_time": "77.04",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 195,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.666",
+            "content": "了"
+          }
+        ],
+        "start_time": "77.04",
+        "end_time": "77.239",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 196,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.95",
+            "content": "好多年"
+          }
+        ],
+        "start_time": "77.239",
+        "end_time": "77.489",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 197,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": ","
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 198,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.816",
+            "content": "今年"
+          }
+        ],
+        "start_time": "77.519",
+        "end_time": "77.76",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 199,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.99",
+            "content": "还"
+          }
+        ],
+        "start_time": "77.76",
+        "end_time": "77.849",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 200,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.987",
+            "content": "在"
+          }
+        ],
+        "start_time": "77.849",
+        "end_time": "77.959",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 201,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.98",
+            "content": "暴涨"
+          }
+        ],
+        "start_time": "77.959",
+        "end_time": "78.25",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 202,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": ","
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 203,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.996",
+            "content": "而且"
+          }
+        ],
+        "start_time": "78.919",
+        "end_time": "79.23",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 204,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.993",
+            "content": "我"
+          }
+        ],
+        "start_time": "79.23",
+        "end_time": "79.319",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 205,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.994",
+            "content": "告诉"
+          }
+        ],
+        "start_time": "79.319",
+        "end_time": "79.48",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 206,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.99",
+            "content": "你"
+          }
+        ],
+        "start_time": "79.48",
+        "end_time": "79.599",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 207,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.849",
+            "content": "啊"
+          }
+        ],
+        "start_time": "79.599",
+        "end_time": "79.639",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 208,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": ","
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 209,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.94",
+            "content": "就是"
+          }
+        ],
+        "start_time": "79.72",
+        "end_time": "80.19",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 210,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.995",
+            "content": "中国"
+          }
+        ],
+        "start_time": "80.559",
+        "end_time": "80.879",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 211,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.972",
+            "content": "的"
+          }
+        ],
+        "start_time": "80.879",
+        "end_time": "81.0",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 212,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.971",
+            "content": "这些"
+          }
+        ],
+        "start_time": "81.0",
+        "end_time": "81.709",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 213,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.919",
+            "content": "创销"
+          }
+        ],
+        "start_time": "81.709",
+        "end_time": "82.199",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 214,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.981",
+            "content": "公司"
+          }
+        ],
+        "start_time": "82.199",
+        "end_time": "82.36",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 215,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.597",
+            "content": "呢"
+          }
+        ],
+        "start_time": "82.36",
+        "end_time": "82.4",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 216,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": ","
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 217,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.848",
+            "content": "它"
+          }
+        ],
+        "start_time": "82.44",
+        "end_time": "82.559",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 218,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.985",
+            "content": "的"
+          }
+        ],
+        "start_time": "82.559",
+        "end_time": "82.68",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 219,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.983",
+            "content": "产品"
+          }
+        ],
+        "start_time": "82.68",
+        "end_time": "83.279",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 220,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.591",
+            "content": "基本"
+          }
+        ],
+        "start_time": "83.279",
+        "end_time": "83.44",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 221,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.931",
+            "content": "都"
+          }
+        ],
+        "start_time": "83.44",
+        "end_time": "83.519",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 222,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.981",
+            "content": "卖"
+          }
+        ],
+        "start_time": "83.519",
+        "end_time": "83.709",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 223,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.989",
+            "content": "给"
+          }
+        ],
+        "start_time": "83.709",
+        "end_time": "83.76",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 224,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.969",
+            "content": "了"
+          }
+        ],
+        "start_time": "83.76",
+        "end_time": "84.0",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 225,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.986",
+            "content": "这"
+          }
+        ],
+        "start_time": "84.0",
+        "end_time": "84.139",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 226,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.986",
+            "content": "几家"
+          }
+        ],
+        "start_time": "84.139",
+        "end_time": "84.51",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 227,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.998",
+            "content": "公司"
+          }
+        ],
+        "start_time": "84.51",
+        "end_time": "84.68",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 228,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": ","
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 229,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.95",
+            "content": "卖"
+          }
+        ],
+        "start_time": "85.16",
+        "end_time": "85.33",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 230,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.99",
+            "content": "给"
+          }
+        ],
+        "start_time": "85.33",
+        "end_time": "85.36",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 231,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.986",
+            "content": "了"
+          }
+        ],
+        "start_time": "85.36",
+        "end_time": "85.48",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 232,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.994",
+            "content": "欧美"
+          }
+        ],
+        "start_time": "85.48",
+        "end_time": "85.83",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 233,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.966",
+            "content": "的"
+          }
+        ],
+        "start_time": "85.83",
+        "end_time": "85.919",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 234,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.711",
+            "content": "这些"
+          }
+        ],
+        "start_time": "85.919",
+        "end_time": "85.959",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 235,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.931",
+            "content": "创业"
+          }
+        ],
+        "start_time": "85.959",
+        "end_time": "86.239",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 236,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.579",
+            "content": "巨头。"
+          }
+        ],
+        "start_time": "86.239",
+        "end_time": "86.79",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 237,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.889",
+            "content": "那"
+          }
+        ],
+        "start_time": "87.04",
+        "end_time": "87.169",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 238,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.996",
+            "content": "如果"
+          }
+        ],
+        "start_time": "87.169",
+        "end_time": "87.519",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 239,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.989",
+            "content": "买"
+          }
+        ],
+        "start_time": "87.519",
+        "end_time": "87.73",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 240,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.993",
+            "content": "这些"
+          }
+        ],
+        "start_time": "87.73",
+        "end_time": "88.269",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 241,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.937",
+            "content": "呃"
+          }
+        ],
+        "start_time": "88.72",
+        "end_time": "89.16",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 242,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.96",
+            "content": "医药"
+          }
+        ],
+        "start_time": "89.16",
+        "end_time": "89.589",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 243,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.992",
+            "content": "专利"
+          }
+        ],
+        "start_time": "89.589",
+        "end_time": "89.87",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 244,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.995",
+            "content": "的"
+          }
+        ],
+        "start_time": "89.87",
+        "end_time": "90.279",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 245,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.999",
+            "content": "公司"
+          }
+        ],
+        "start_time": "90.279",
+        "end_time": "90.55",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 246,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.996",
+            "content": "如果"
+          }
+        ],
+        "start_time": "90.72",
+        "end_time": "91.0",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 247,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.992",
+            "content": "都"
+          }
+        ],
+        "start_time": "91.0",
+        "end_time": "91.269",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 248,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.998",
+            "content": "不行"
+          }
+        ],
+        "start_time": "91.269",
+        "end_time": "91.44",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 249,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.971",
+            "content": "了"
+          }
+        ],
+        "start_time": "91.44",
+        "end_time": "91.529",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 250,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": ","
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 251,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.968",
+            "content": "你"
+          }
+        ],
+        "start_time": "91.68",
+        "end_time": "91.839",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 252,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.988",
+            "content": "觉得"
+          }
+        ],
+        "start_time": "91.839",
+        "end_time": "92.0",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 253,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.957",
+            "content": "卖"
+          }
+        ],
+        "start_time": "92.0",
+        "end_time": "92.239",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 254,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.79",
+            "content": "的"
+          }
+        ],
+        "start_time": "92.239",
+        "end_time": "92.519",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 255,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.64",
+            "content": "会"
+          }
+        ],
+        "start_time": "92.519",
+        "end_time": "92.72",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 256,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.389",
+            "content": "受受"
+          }
+        ],
+        "start_time": "92.72",
+        "end_time": "93.0",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 257,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.994",
+            "content": "影响"
+          }
+        ],
+        "start_time": "93.0",
+        "end_time": "93.29",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 258,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": "?"
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 259,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.941",
+            "content": "对"
+          }
+        ],
+        "start_time": "94.4",
+        "end_time": "94.529",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 260,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.736",
+            "content": "呀"
+          }
+        ],
+        "start_time": "94.529",
+        "end_time": "94.599",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 261,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": ","
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 262,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.933",
+            "content": "肯定"
+          }
+        ],
+        "start_time": "94.72",
+        "end_time": "94.879",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 263,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.896",
+            "content": "受"
+          }
+        ],
+        "start_time": "94.879",
+        "end_time": "95.04",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 264,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.94",
+            "content": "影响"
+          }
+        ],
+        "start_time": "95.04",
+        "end_time": "95.269",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 265,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.943",
+            "content": "很大"
+          }
+        ],
+        "start_time": "95.269",
+        "end_time": "95.43",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 266,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": ","
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 267,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.92",
+            "content": "对"
+          }
+        ],
+        "start_time": "95.44",
+        "end_time": "95.559",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 268,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.923",
+            "content": "不"
+          }
+        ],
+        "start_time": "95.559",
+        "end_time": "95.589",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 269,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.878",
+            "content": "对"
+          }
+        ],
+        "start_time": "95.589",
+        "end_time": "95.769",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 270,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": "?"
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 271,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.847",
+            "content": "所以"
+          }
+        ],
+        "start_time": "96.4",
+        "end_time": "96.919",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 272,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.873",
+            "content": "很多"
+          }
+        ],
+        "start_time": "96.919",
+        "end_time": "97.04",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 273,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.838",
+            "content": "时候"
+          }
+        ],
+        "start_time": "97.04",
+        "end_time": "97.889",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 274,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.994",
+            "content": "买"
+          }
+        ],
+        "start_time": "98.75",
+        "end_time": "99.019",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 275,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.899",
+            "content": "这个"
+          }
+        ],
+        "start_time": "99.019",
+        "end_time": "99.23",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 276,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.606",
+            "content": "港股创校"
+          }
+        ],
+        "start_time": "99.23",
+        "end_time": "99.73",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 277,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.906",
+            "content": "的"
+          }
+        ],
+        "start_time": "99.73",
+        "end_time": "99.75",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 278,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.974",
+            "content": "兄弟"
+          }
+        ],
+        "start_time": "99.75",
+        "end_time": "99.989",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 279,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.963",
+            "content": "呢"
+          }
+        ],
+        "start_time": "99.989",
+        "end_time": "100.319",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 280,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": "?"
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 281,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.994",
+            "content": "还是"
+          }
+        ],
+        "start_time": "100.68",
+        "end_time": "100.87",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 282,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.977",
+            "content": "要"
+          }
+        ],
+        "start_time": "100.87",
+        "end_time": "100.94",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 283,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.979",
+            "content": "防范"
+          }
+        ],
+        "start_time": "100.94",
+        "end_time": "101.199",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 284,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.743",
+            "content": "一下"
+          }
+        ],
+        "start_time": "101.199",
+        "end_time": "101.23",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 285,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.982",
+            "content": "风险"
+          }
+        ],
+        "start_time": "101.23",
+        "end_time": "101.779",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 286,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.776",
+            "content": "啊"
+          }
+        ],
+        "start_time": "103.12",
+        "end_time": "103.129",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 287,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.918",
+            "content": "比如说"
+          }
+        ],
+        "start_time": "103.129",
+        "end_time": "103.139",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 288,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.976",
+            "content": "你"
+          }
+        ],
+        "start_time": "103.139",
+        "end_time": "103.15",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 289,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.933",
+            "content": "甲方"
+          }
+        ],
+        "start_time": "103.15",
+        "end_time": "103.449",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 290,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.992",
+            "content": "买方"
+          }
+        ],
+        "start_time": "103.449",
+        "end_time": "103.9",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 291,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.748",
+            "content": "是"
+          }
+        ],
+        "start_time": "103.9",
+        "end_time": "104.12",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 292,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.874",
+            "content": "吧"
+          }
+        ],
+        "start_time": "104.12",
+        "end_time": "104.23",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 293,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": ","
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 294,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.993",
+            "content": "都"
+          }
+        ],
+        "start_time": "104.269",
+        "end_time": "104.379",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 295,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.986",
+            "content": "在"
+          }
+        ],
+        "start_time": "104.379",
+        "end_time": "104.47",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 296,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.994",
+            "content": "裁员"
+          }
+        ],
+        "start_time": "104.47",
+        "end_time": "104.989",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 297,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.96",
+            "content": "降薪"
+          }
+        ],
+        "start_time": "104.989",
+        "end_time": "105.58",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 298,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.729",
+            "content": "啊"
+          }
+        ],
+        "start_time": "105.91",
+        "end_time": "106.029",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 299,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.991",
+            "content": "都"
+          }
+        ],
+        "start_time": "106.029",
+        "end_time": "106.15",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 300,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.994",
+            "content": "在"
+          }
+        ],
+        "start_time": "106.15",
+        "end_time": "106.58",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 301,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.981",
+            "content": "过"
+          }
+        ],
+        "start_time": "106.91",
+        "end_time": "107.029",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 302,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.232",
+            "content": "苦日子。"
+          }
+        ],
+        "start_time": "107.029",
+        "end_time": "107.629",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 303,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.995",
+            "content": "那"
+          }
+        ],
+        "start_time": "107.93",
+        "end_time": "108.33",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 304,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.702",
+            "content": "你"
+          }
+        ],
+        "start_time": "108.33",
+        "end_time": "108.339",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 305,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.981",
+            "content": "卖家"
+          }
+        ],
+        "start_time": "108.339",
+        "end_time": "108.73",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 306,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.998",
+            "content": "肯定"
+          }
+        ],
+        "start_time": "108.73",
+        "end_time": "108.94",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 307,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.993",
+            "content": "受"
+          }
+        ],
+        "start_time": "108.94",
+        "end_time": "109.22",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 308,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.995",
+            "content": "影响"
+          }
+        ],
+        "start_time": "109.22",
+        "end_time": "109.41",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 309,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.665",
+            "content": "因为"
+          }
+        ],
+        "start_time": "109.41",
+        "end_time": "109.599",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 310,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.986",
+            "content": "你"
+          }
+        ],
+        "start_time": "109.599",
+        "end_time": "109.69",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 311,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.989",
+            "content": "的"
+          }
+        ],
+        "start_time": "109.69",
+        "end_time": "109.86",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 312,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.997",
+            "content": "客户"
+          }
+        ],
+        "start_time": "109.86",
+        "end_time": "110.29",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 313,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.748",
+            "content": "是"
+          }
+        ],
+        "start_time": "110.62",
+        "end_time": "110.669",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 314,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.874",
+            "content": "吧"
+          }
+        ],
+        "start_time": "110.669",
+        "end_time": "110.779",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 315,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": "?"
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 316,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.994",
+            "content": "都"
+          }
+        ],
+        "start_time": "110.819",
+        "end_time": "111.019",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 317,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.993",
+            "content": "是"
+          }
+        ],
+        "start_time": "111.019",
+        "end_time": "111.41",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 318,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.987",
+            "content": "入不敷出"
+          }
+        ],
+        "start_time": "111.86",
+        "end_time": "112.339",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 319,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.941",
+            "content": "了"
+          }
+        ],
+        "start_time": "112.339",
+        "end_time": "112.569",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 320,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.996",
+            "content": "那"
+          }
+        ],
+        "start_time": "112.9",
+        "end_time": "113.029",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 321,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.995",
+            "content": "你"
+          }
+        ],
+        "start_time": "113.029",
+        "end_time": "113.18",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 322,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.919",
+            "content": "作为"
+          }
+        ],
+        "start_time": "113.18",
+        "end_time": "113.459",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 323,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.987",
+            "content": "一个"
+          }
+        ],
+        "start_time": "113.459",
+        "end_time": "113.54",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 324,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.997",
+            "content": "制造商"
+          }
+        ],
+        "start_time": "113.54",
+        "end_time": "114.3",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 325,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.997",
+            "content": "肯定"
+          }
+        ],
+        "start_time": "114.3",
+        "end_time": "114.5",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 326,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.985",
+            "content": "也"
+          }
+        ],
+        "start_time": "114.5",
+        "end_time": "114.58",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 327,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.962",
+            "content": "很"
+          }
+        ],
+        "start_time": "114.58",
+        "end_time": "114.69",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 328,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.994",
+            "content": "难受"
+          }
+        ],
+        "start_time": "114.69",
+        "end_time": "115.059",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 329,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.662",
+            "content": "这"
+          }
+        ],
+        "start_time": "115.059",
+        "end_time": "115.22",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 330,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.376",
+            "content": "对应"
+          }
+        ],
+        "start_time": "115.22",
+        "end_time": "115.449",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 331,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.862",
+            "content": "了"
+          }
+        ],
+        "start_time": "115.449",
+        "end_time": "115.58",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 332,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.98",
+            "content": "今年"
+          }
+        ],
+        "start_time": "115.58",
+        "end_time": "115.819",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 333,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.986",
+            "content": "为什么"
+          }
+        ],
+        "start_time": "115.819",
+        "end_time": "116.209",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 334,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.996",
+            "content": "很多"
+          }
+        ],
+        "start_time": "116.699",
+        "end_time": "116.819",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 335,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.989",
+            "content": "行业"
+          }
+        ],
+        "start_time": "116.819",
+        "end_time": "117.059",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 336,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.943",
+            "content": "卷"
+          }
+        ],
+        "start_time": "117.059",
+        "end_time": "117.25",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 337,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.637",
+            "content": "的"
+          }
+        ],
+        "start_time": "117.25",
+        "end_time": "117.33",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 338,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.981",
+            "content": "这么"
+          }
+        ],
+        "start_time": "117.33",
+        "end_time": "117.459",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 339,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.996",
+            "content": "厉害"
+          }
+        ],
+        "start_time": "117.459",
+        "end_time": "117.97",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 340,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.992",
+            "content": "但是"
+          }
+        ],
+        "start_time": "118.019",
+        "end_time": "118.3",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 341,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.956",
+            "content": "股价"
+          }
+        ],
+        "start_time": "118.3",
+        "end_time": "118.61",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 342,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.939",
+            "content": "呢"
+          }
+        ],
+        "start_time": "118.61",
+        "end_time": "118.62",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 343,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.824",
+            "content": "跌跌不休"
+          }
+        ],
+        "start_time": "118.62",
+        "end_time": "119.37",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 344,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.619",
+            "content": "是"
+          }
+        ],
+        "start_time": "119.66",
+        "end_time": "119.699",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 345,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.93",
+            "content": "吧"
+          }
+        ],
+        "start_time": "119.699",
+        "end_time": "119.779",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 346,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": "?"
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 347,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.977",
+            "content": "你"
+          }
+        ],
+        "start_time": "119.819",
+        "end_time": "119.91",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 348,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.867",
+            "content": "像"
+          }
+        ],
+        "start_time": "119.91",
+        "end_time": "120.019",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 349,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.997",
+            "content": "家电"
+          }
+        ],
+        "start_time": "120.019",
+        "end_time": "120.449",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 350,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.85",
+            "content": "是"
+          }
+        ],
+        "start_time": "120.699",
+        "end_time": "120.739",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 351,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.947",
+            "content": "吧"
+          }
+        ],
+        "start_time": "120.739",
+        "end_time": "120.819",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 352,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": "?"
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 353,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.998",
+            "content": "因为"
+          }
+        ],
+        "start_time": "120.9",
+        "end_time": "121.129",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 354,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.993",
+            "content": "你"
+          }
+        ],
+        "start_time": "121.129",
+        "end_time": "121.3",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 355,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.994",
+            "content": "出口"
+          }
+        ],
+        "start_time": "121.3",
+        "end_time": "121.589",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 356,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.996",
+            "content": "的话"
+          }
+        ],
+        "start_time": "121.589",
+        "end_time": "121.94",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 357,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.975",
+            "content": "你"
+          }
+        ],
+        "start_time": "122.059",
+        "end_time": "122.099",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 358,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.953",
+            "content": "的"
+          }
+        ],
+        "start_time": "122.099",
+        "end_time": "122.22",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 359,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.997",
+            "content": "客户"
+          }
+        ],
+        "start_time": "122.22",
+        "end_time": "122.58",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 360,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.986",
+            "content": "现在"
+          }
+        ],
+        "start_time": "122.58",
+        "end_time": "122.779",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 361,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.994",
+            "content": "消费"
+          }
+        ],
+        "start_time": "122.779",
+        "end_time": "122.989",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 362,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.995",
+            "content": "也"
+          }
+        ],
+        "start_time": "122.989",
+        "end_time": "123.099",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 363,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.997",
+            "content": "不景气"
+          }
+        ],
+        "start_time": "123.099",
+        "end_time": "123.86",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 364,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.874",
+            "content": "对"
+          }
+        ],
+        "start_time": "124.05",
+        "end_time": "124.139",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 365,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.988",
+            "content": "吧"
+          }
+        ],
+        "start_time": "124.139",
+        "end_time": "124.26",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 366,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": "?"
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 367,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.986",
+            "content": "你"
+          }
+        ],
+        "start_time": "124.3",
+        "end_time": "124.419",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 368,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.963",
+            "content": "像"
+          }
+        ],
+        "start_time": "124.419",
+        "end_time": "124.58",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 369,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.632",
+            "content": "那些"
+          }
+        ],
+        "start_time": "124.58",
+        "end_time": "124.739",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 370,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.934",
+            "content": "制药"
+          }
+        ],
+        "start_time": "124.739",
+        "end_time": "125.099",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 371,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.996",
+            "content": "公司"
+          }
+        ],
+        "start_time": "125.099",
+        "end_time": "125.449",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 372,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.987",
+            "content": "他们"
+          }
+        ],
+        "start_time": "125.779",
+        "end_time": "125.98",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 373,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.998",
+            "content": "为什么"
+          }
+        ],
+        "start_time": "125.98",
+        "end_time": "126.22",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 374,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.996",
+            "content": "裁员"
+          }
+        ],
+        "start_time": "126.22",
+        "end_time": "126.629",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 375,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.978",
+            "content": "呢"
+          }
+        ],
+        "start_time": "126.629",
+        "end_time": "126.699",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 376,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": "?"
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 377,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.965",
+            "content": "就是"
+          }
+        ],
+        "start_time": "126.709",
+        "end_time": "126.9",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 378,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.991",
+            "content": "因为"
+          }
+        ],
+        "start_time": "126.9",
+        "end_time": "127.16",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 379,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.987",
+            "content": "他们"
+          }
+        ],
+        "start_time": "127.16",
+        "end_time": "127.339",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 380,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.974",
+            "content": "的"
+          }
+        ],
+        "start_time": "127.339",
+        "end_time": "127.43",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 381,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.974",
+            "content": "人工成本"
+          }
+        ],
+        "start_time": "127.43",
+        "end_time": "127.9",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 382,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.996",
+            "content": "太高"
+          }
+        ],
+        "start_time": "127.9",
+        "end_time": "128.41",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 383,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.98",
+            "content": "业绩"
+          }
+        ],
+        "start_time": "128.41",
+        "end_time": "128.74",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 384,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.999",
+            "content": "下滑"
+          }
+        ],
+        "start_time": "128.74",
+        "end_time": "129.169",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 385,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.86",
+            "content": "是"
+          }
+        ],
+        "start_time": "129.509",
+        "end_time": "129.58",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 386,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.944",
+            "content": "吧"
+          }
+        ],
+        "start_time": "129.58",
+        "end_time": "129.66",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 387,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": "?"
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 388,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.99",
+            "content": "他们"
+          }
+        ],
+        "start_time": "129.74",
+        "end_time": "130.02",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 389,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.956",
+            "content": "想"
+          }
+        ],
+        "start_time": "130.02",
+        "end_time": "130.33",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 390,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.916",
+            "content": "赶紧"
+          }
+        ],
+        "start_time": "130.66",
+        "end_time": "131.1",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 391,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.419",
+            "content": "节衣缩食"
+          }
+        ],
+        "start_time": "131.1",
+        "end_time": "131.85",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 392,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.993",
+            "content": "但是"
+          }
+        ],
+        "start_time": "132.22",
+        "end_time": "132.5",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 393,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.993",
+            "content": "如果说"
+          }
+        ],
+        "start_time": "132.5",
+        "end_time": "133.169",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 394,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.998",
+            "content": "我们"
+          }
+        ],
+        "start_time": "133.169",
+        "end_time": "133.49",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 395,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.934",
+            "content": "的"
+          }
+        ],
+        "start_time": "133.49",
+        "end_time": "133.669",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 396,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.024",
+            "content": "推销"
+          }
+        ],
+        "start_time": "133.669",
+        "end_time": "133.94",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 397,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.901",
+            "content": "公司"
+          }
+        ],
+        "start_time": "133.94",
+        "end_time": "134.059",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 398,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.989",
+            "content": "呢"
+          }
+        ],
+        "start_time": "134.059",
+        "end_time": "134.199",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 399,
+        "type": "punctuation",
+        "alternatives": [
+          {
+            "confidence": "0.0",
+            "content": "?"
+          }
+        ],
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 400,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.997",
+            "content": "还"
+          }
+        ],
+        "start_time": "134.66",
+        "end_time": "134.74",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 401,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.994",
+            "content": "在"
+          }
+        ],
+        "start_time": "134.74",
+        "end_time": "134.82",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 402,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.99",
+            "content": "暴涨"
+          }
+        ],
+        "start_time": "134.82",
+        "end_time": "135.369",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 403,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.995",
+            "content": "是不是"
+          }
+        ],
+        "start_time": "135.619",
+        "end_time": "135.94",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 404,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.997",
+            "content": "意味着"
+          }
+        ],
+        "start_time": "135.94",
+        "end_time": "136.289",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 405,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.993",
+            "content": "这个"
+          }
+        ],
+        "start_time": "136.58",
+        "end_time": "136.74",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 406,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.992",
+            "content": "节点"
+          }
+        ],
+        "start_time": "136.74",
+        "end_time": "137.1",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 407,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.997",
+            "content": "快到"
+          }
+        ],
+        "start_time": "137.1",
+        "end_time": "137.339",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 408,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.987",
+            "content": "了"
+          }
+        ],
+        "start_time": "137.339",
+        "end_time": "137.559",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 409,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.996",
+            "content": "所以"
+          }
+        ],
+        "start_time": "138.61",
+        "end_time": "138.929",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 410,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.946",
+            "content": "呢"
+          }
+        ],
+        "start_time": "138.929",
+        "end_time": "139.24",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 411,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.984",
+            "content": "买"
+          }
+        ],
+        "start_time": "139.41",
+        "end_time": "139.57",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 412,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.277",
+            "content": "创销兄弟"
+          }
+        ],
+        "start_time": "139.57",
+        "end_time": "140.1",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 413,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.647",
+            "content": "呢"
+          }
+        ],
+        "start_time": "140.1",
+        "end_time": "140.289",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 414,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.988",
+            "content": "一定"
+          }
+        ],
+        "start_time": "140.289",
+        "end_time": "140.41",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 415,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.983",
+            "content": "要"
+          }
+        ],
+        "start_time": "140.41",
+        "end_time": "140.529",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 416,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.997",
+            "content": "小心"
+          }
+        ],
+        "start_time": "140.529",
+        "end_time": "140.919",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 417,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.992",
+            "content": "一点"
+          }
+        ],
+        "start_time": "140.919",
+        "end_time": "141.089",
+        "speaker_label": "spk_0"
+      },
+      {
+        "id": 418,
+        "type": "pronunciation",
+        "alternatives": [
+          {
+            "confidence": "0.757",
+            "content": "啊"
+          }
+        ],
+        "start_time": "141.089",
+        "end_time": "141.309",
+        "speaker_label": "spk_0"
+      }
+    ],
+    "audio_segments": [
+      {
+        "id": 0,
+        "transcript": "你知道世界上最大的减肥药公司是哪个公司吗?是诺和诺德和里兰你知道他值多少钱吗?诺和诺德里兰曾经一度将近一万亿美金但是呢这个斯美格鲁泰啊这个世界上原来最牛逼的减肥药最近开始暴跌了",
+        "start_time": "1.539",
+        "end_time": "20.85",
+        "speaker_label": "spk_0",
+        "items": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51
+        ]
+      },
+      {
+        "id": 1,
+        "transcript": "你能为啥暴跌吗?是因为它的销售额不足预期就是现在呢股价呢?腰斩再腰斩打了个三点五折到四折之间。",
+        "start_time": "21.67",
+        "end_time": "31.299",
+        "speaker_label": "spk_0",
+        "items": [
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79
+        ]
+      },
+      {
+        "id": 2,
+        "transcript": "从这个六七千个亿现在跌到了两千个亿了增发了有四千多亿美金啊恐怖吧",
+        "start_time": "32.18",
+        "end_time": "39.81",
+        "speaker_label": "spk_0",
+        "items": [
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97
+        ]
+      },
+      {
+        "id": 3,
+        "transcript": "那如果说世界上最牛逼的减肥药公司还有这个糖尿病公司都这样你觉得不牛逼的公司会怎么样?",
+        "start_time": "40.909",
+        "end_time": "48.209",
+        "speaker_label": "spk_0",
+        "items": [
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121,
+          122
+        ]
+      },
+      {
+        "id": 4,
+        "transcript": "会不会跌得更惨呀?对呀所以呢你看我们对比一下创医药公司啊你看多多得现在呢pe呢只有十三倍左右",
+        "start_time": "48.83",
+        "end_time": "60.779",
+        "speaker_label": "spk_0",
+        "items": [
+          123,
+          124,
+          125,
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139,
+          140,
+          141,
+          142,
+          143,
+          144,
+          145,
+          146,
+          147,
+          148,
+          149,
+          150,
+          151
+        ]
+      },
+      {
+        "id": 5,
+        "transcript": "然后默沙东啊,也是制药巨头啊,只有十二倍左右,包括再生远公司也就十二三倍左右。但是你知道中国的畅销公司现在雇值多少倍吗?",
+        "start_time": "61.38",
+        "end_time": "72.099",
+        "speaker_label": "spk_0",
+        "items": [
+          152,
+          153,
+          154,
+          155,
+          156,
+          157,
+          158,
+          159,
+          160,
+          161,
+          162,
+          163,
+          164,
+          165,
+          166,
+          167,
+          168,
+          169,
+          170,
+          171,
+          172,
+          173,
+          174,
+          175,
+          176,
+          177,
+          178,
+          179,
+          180,
+          181,
+          182,
+          183,
+          184,
+          185
+        ]
+      },
+      {
+        "id": 6,
+        "transcript": "中国创业公司现在都亏了好多年,亏了好多年,今年还在暴涨,而且我告诉你啊,就是中国的这些创销公司呢,它的产品基本都卖给了这几家公司,卖给了欧美的这些创业巨头。那如果买这些呃医药专利的公司如果都不行了,你觉得卖的会受受影响?对呀,肯定受影响很大,对不对?所以很多时候",
+        "start_time": "72.919",
+        "end_time": "97.919",
+        "speaker_label": "spk_0",
+        "items": [
+          186,
+          187,
+          188,
+          189,
+          190,
+          191,
+          192,
+          193,
+          194,
+          195,
+          196,
+          197,
+          198,
+          199,
+          200,
+          201,
+          202,
+          203,
+          204,
+          205,
+          206,
+          207,
+          208,
+          209,
+          210,
+          211,
+          212,
+          213,
+          214,
+          215,
+          216,
+          217,
+          218,
+          219,
+          220,
+          221,
+          222,
+          223,
+          224,
+          225,
+          226,
+          227,
+          228,
+          229,
+          230,
+          231,
+          232,
+          233,
+          234,
+          235,
+          236,
+          237,
+          238,
+          239,
+          240,
+          241,
+          242,
+          243,
+          244,
+          245,
+          246,
+          247,
+          248,
+          249,
+          250,
+          251,
+          252,
+          253,
+          254,
+          255,
+          256,
+          257,
+          258,
+          259,
+          260,
+          261,
+          262,
+          263,
+          264,
+          265,
+          266,
+          267,
+          268,
+          269,
+          270,
+          271,
+          272,
+          273
+        ]
+      },
+      {
+        "id": 7,
+        "transcript": "买这个港股创校的兄弟呢?还是要防范一下风险啊比如说你甲方买方是吧,都在裁员降薪啊都在过苦日子。",
+        "start_time": "98.47",
+        "end_time": "107.66",
+        "speaker_label": "spk_0",
+        "items": [
+          274,
+          275,
+          276,
+          277,
+          278,
+          279,
+          280,
+          281,
+          282,
+          283,
+          284,
+          285,
+          286,
+          287,
+          288,
+          289,
+          290,
+          291,
+          292,
+          293,
+          294,
+          295,
+          296,
+          297,
+          298,
+          299,
+          300,
+          301,
+          302
+        ]
+      },
+      {
+        "id": 8,
+        "transcript": "那你卖家肯定受影响因为你的客户是吧?都是入不敷出了那你作为一个制造商肯定也很难受这对应了今年为什么很多行业卷的这么厉害但是股价呢跌跌不休是吧?你像家电是吧?因为你出口的话你的客户现在消费也不景气对吧?你像那些制药公司他们为什么裁员呢?就是因为他们的人工成本太高业绩下滑是吧?他们想赶紧节衣缩食但是如果说我们的推销公司呢?还在暴涨是不是意味着这个节点快到了",
+        "start_time": "107.86",
+        "end_time": "137.589",
+        "speaker_label": "spk_0",
+        "items": [
+          303,
+          304,
+          305,
+          306,
+          307,
+          308,
+          309,
+          310,
+          311,
+          312,
+          313,
+          314,
+          315,
+          316,
+          317,
+          318,
+          319,
+          320,
+          321,
+          322,
+          323,
+          324,
+          325,
+          326,
+          327,
+          328,
+          329,
+          330,
+          331,
+          332,
+          333,
+          334,
+          335,
+          336,
+          337,
+          338,
+          339,
+          340,
+          341,
+          342,
+          343,
+          344,
+          345,
+          346,
+          347,
+          348,
+          349,
+          350,
+          351,
+          352,
+          353,
+          354,
+          355,
+          356,
+          357,
+          358,
+          359,
+          360,
+          361,
+          362,
+          363,
+          364,
+          365,
+          366,
+          367,
+          368,
+          369,
+          370,
+          371,
+          372,
+          373,
+          374,
+          375,
+          376,
+          377,
+          378,
+          379,
+          380,
+          381,
+          382,
+          383,
+          384,
+          385,
+          386,
+          387,
+          388,
+          389,
+          390,
+          391,
+          392,
+          393,
+          394,
+          395,
+          396,
+          397,
+          398,
+          399,
+          400,
+          401,
+          402,
+          403,
+          404,
+          405,
+          406,
+          407,
+          408
+        ]
+      },
+      {
+        "id": 9,
+        "transcript": "所以呢买创销兄弟呢一定要小心一点啊",
+        "start_time": "138.41",
+        "end_time": "141.339",
+        "speaker_label": "spk_0",
+        "items": [
+          409,
+          410,
+          411,
+          412,
+          413,
+          414,
+          415,
+          416,
+          417,
+          418
+        ]
+      }
+    ]
+  }
+}

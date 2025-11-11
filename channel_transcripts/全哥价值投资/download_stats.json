@@ -1,0 +1,20 @@
+{
+  "total_videos": 482,
+  "downloaded": 480,
+  "skipped": 0,
+  "failed": 2,
+  "errors": [
+    {
+      "video_id": "By-5Y7ZrkWc",
+      "title": "高通开发ai芯片/股价暴涨",
+      "error": "No transcript available after YouTube API and Whisper"
+    },
+    {
+      "video_id": "UziJ8wo9Hhg",
+      "title": "怎么样低成本移民美国，我总共花了几千块就拿到美国绿卡",
+      "error": "Failed to download video: ERROR: \r[download] Got error: HTTP Error 500: Internal Server Error"
+    }
+  ],
+  "total_time_seconds": 6858.617369174957,
+  "completed_at": "2025-11-10T20:21:03.528712"
+}

@@ -17,6 +17,25 @@ from ads.youtube_analyze.youtubeMetaUtil import download_transcript as meta_down
 import whisper
 from youtubeTranscript import download_youtube_transcript, download_youtube_transcript_alternative, get_available_languages
 
+# Multi-Tor support imports
+try:
+    import sys
+    sys.path.append('/Users/haha/github/multi-tor')
+    from multi_tor_downloader import MultiTorTranscriptDownloader  # type: ignore
+    MULTI_TOR_AVAILABLE = True
+except ImportError:
+    MULTI_TOR_AVAILABLE = False
+    print("Multi-Tor not available. Install PySocks and ensure multi-tor setup is complete.")
+
+# Legacy Tor support imports (fallback)
+try:
+    import socks
+    TOR_AVAILABLE = True
+except ImportError:
+    TOR_AVAILABLE = False
+    if not MULTI_TOR_AVAILABLE:
+        print("PySocks not installed. Install with: pip install PySocks")
+
 # ========== CONFIGURATION ==========
 CACHE_DIR = Path(__file__).parent / ".cache"
 CACHE_DIR.mkdir(exist_ok=True)
@@ -78,43 +97,38 @@ def cache_transcript(video_id: str, transcript: str, language: str, title: str =
 
 def try_youtube_transcript(video_id):
     """
-    Try to extract transcript using youtubeTranscript.py functions.
+    Try to extract transcript using multi-Tor only (no fallback methods).
     Returns a dict with 'transcript' and 'language' or None if not available.
     """
     try:
-        url = f"https://www.youtube.com/watch?v={video_id}"
-        
-        # Try the main transcript download function first
-        transcript_text = download_youtube_transcript(
-            url, 
-            language_codes=['en', 'en-US', 'en-GB', 'zh-CN', 'zh-TW', 'zh']
-        )
-        
-        if transcript_text:
-            # Get available languages to determine the language used
-            available_languages = get_available_languages(url)
-            language = 'en'  # default
-            if available_languages:
-                # Use the first available language
-                language = available_languages[0]['language_code']
-            
-            cache_transcript(video_id, transcript_text, language)
-            return {"transcript": transcript_text, "language": language}
-        
-        # If main method failed, try alternative method
-        transcript_text = download_youtube_transcript_alternative(url)
-        if transcript_text:
-            # Get available languages to determine the language used
-            available_languages = get_available_languages(url)
-            language = 'en'  # default
-            if available_languages:
-                # Use the first available language
-                language = available_languages[0]['language_code']
-            
-            cache_transcript(video_id, transcript_text, language)
-            return {"transcript": transcript_text, "language": language}
-        
-        return None
+        # Only use multi-Tor approach if available
+        if MULTI_TOR_AVAILABLE:
+            logging.info("Using multi-Tor for transcript download")
+            logging.info(f"🎯 Target video: https://www.youtube.com/watch?v={video_id}")
+            try:
+                downloader = MultiTorTranscriptDownloader(logging.getLogger(__name__))
+                transcript_segments = downloader.get_video_transcript_with_multi_tor(video_id)
+                
+                if transcript_segments:
+                    # Convert segments to text format
+                    transcript_text = " ".join([segment['text'] for segment in transcript_segments])
+                    language = 'en'  # Default to English
+                    cache_transcript(video_id, transcript_text, language)
+                    logging.info(f"✅ Successfully downloaded transcript using multi-Tor: {len(transcript_segments)} segments")
+                    logging.info(f"📊 Multi-Tor stats: {downloader.get_proxy_stats()}")
+                    return {"transcript": transcript_text, "language": language}
+                else:
+                    logging.error("❌ Multi-Tor failed to get transcript - no fallback methods available")
+                    logging.info(f"📊 Multi-Tor final stats: {downloader.get_proxy_stats()}")
+                    return None
+            except Exception as e:
+                logging.error(f"❌ Multi-Tor failed with exception: {e} - no fallback methods available")
+                import traceback
+                logging.debug(f"Multi-Tor exception traceback: {traceback.format_exc()}")
+                return None
+        else:
+            logging.error("❌ Multi-Tor not available and no fallback methods configured")
+            return None
         
     except Exception as e:
         import traceback
@@ -149,11 +163,11 @@ def download_video_if_needed(video_id, video_url, video_path):
         if response.lower() != 'y':
             sys.exit(1)
         format_list = [
-            'bestvideo+bestaudio/best',
-            'best[ext=mp4]/best',
-            'best',
-            '18',  # mp4 360p
+            '18',  # mp4 360p (lowest resolution first)
             '22',  # mp4 720p
+            'best[ext=mp4]/best',  # best MP4
+            'best',  # best overall
+            'bestvideo+bestaudio/best',  # highest quality (fallback)
         ]
         cookies_path = os.path.join(os.getcwd(), 'cookies.txt')
         last_exception = None
@@ -206,10 +220,7 @@ def detect_and_confirm_language(video_id, title):
     else:
         language = detected_language
         logging.info(f"Detected language: {language}")
-        confirm = input("Is this correct? (y/n): ")
-        if confirm.lower() != 'y':
-            language = input("Enter language code (en-US/zh-CN): ")
-        # Immediately cache the confirmed language
+        # Automatically use the detected language and cache it
         cache_data = {}
         if cache_file.exists():
             try:
@@ -563,6 +574,44 @@ def add_to_url_history(url, title):
 # ========== MAIN CHATBOT LOGIC ==========
 def main():
     print("YouTube Video Summarizer & Chatbot (Claude 3.5 Sonnet on AWS Bedrock)")
+    
+    # Check Tor status
+    if MULTI_TOR_AVAILABLE:
+        print("✅ Multi-Tor setup detected - will use for transcript downloading")
+        # Test if any Tor instances are running
+        tor_instances_running = 0
+        tor_ports = [9050, 9052, 9054, 9056, 9058]
+        for port in tor_ports:
+            try:
+                import socket
+                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                sock.settimeout(2)
+                result = sock.connect_ex(("127.0.0.1", port))
+                sock.close()
+                if result == 0:
+                    tor_instances_running += 1
+            except Exception:
+                pass
+        
+        if tor_instances_running > 0:
+            print(f"✅ {tor_instances_running} Tor instances running - will use multi-Tor for transcript downloading")
+        else:
+            print("⚠️ No Tor instances running - start with: /Users/haha/github/multi-tor/tor-manager.sh start")
+    elif TOR_AVAILABLE:
+        try:
+            import socket
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.settimeout(2)
+            result = sock.connect_ex(("127.0.0.1", 9050))
+            sock.close()
+            if result == 0:
+                print("✅ Single Tor proxy detected - will use for transcript downloading")
+            else:
+                print("⚠️ Tor not running - will use direct connection (may be blocked)")
+        except Exception:
+            print("⚠️ Tor not running - will use direct connection (may be blocked)")
+    else:
+        print("⚠️ PySocks not installed - install with: pip install PySocks")
     # Load history and prompt user
     url_history = load_url_history()
     url = None
