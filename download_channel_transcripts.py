@@ -481,55 +481,6 @@ def get_channel_info(channel_url_or_id: str, cache_dir: Optional[Path] = None) -
         raise
 
 
-def get_video_upload_date(video_id: str) -> Optional[str]:
-    """
-    Get upload date for a single video by fetching full metadata.
-    This is used when extract_flat=True doesn't provide dates.
-    
-    Args:
-        video_id: YouTube video ID
-        
-    Returns:
-        Upload date as YYYY-MM-DD string, or None if failed
-    """
-    url = f"https://www.youtube.com/watch?v={video_id}"
-    
-    ydl_opts = {
-        'quiet': True,
-        'no_warnings': True,
-        'skip_download': True,
-    }
-    
-    try:
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            info = ydl.extract_info(url, download=False)
-            
-            # Try different date fields
-            upload_date = (
-                info.get('upload_date') or
-                info.get('release_date') or
-                None
-            )
-            
-            if upload_date:
-                # Format: YYYYMMDD -> YYYY-MM-DD
-                if len(upload_date) == 8:
-                    return f"{upload_date[:4]}-{upload_date[4:6]}-{upload_date[6:8]}"
-                return upload_date
-            
-            # Try timestamp
-            timestamp = info.get('timestamp')
-            if timestamp:
-                from datetime import datetime
-                return datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d')
-                
-    except Exception as e:
-        logger.debug(f"Failed to fetch date for {video_id}: {e}")
-        return None
-    
-    return None
-
-
 def get_all_channel_videos(channel_url_or_id: str) -> List[Dict]:
     """
     Get all videos from a channel using yt-dlp.
@@ -914,18 +865,6 @@ def download_channel_transcripts(channel_url_or_id: str, skip_existing: bool = T
                 except Exception as e:
                     logger.warning(f"⚠️  Failed to read cache: {e}, will download fresh")
                     sys.stdout.flush()
-            
-            # Fetch upload date if not already in video data
-            if 'upload_date' not in video or not video.get('upload_date'):
-                logger.info("📅 Fetching upload date...")
-                sys.stdout.flush()
-                upload_date = get_video_upload_date(video_id)
-                if upload_date:
-                    video['upload_date'] = upload_date
-                    logger.info(f"   ✅ Upload date: {upload_date}")
-                else:
-                    logger.warning(f"   ⚠️  Could not fetch upload date")
-                sys.stdout.flush()
             
             # Download transcript (with automatic Whisper fallback)
             try:
