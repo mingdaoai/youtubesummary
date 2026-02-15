@@ -492,8 +492,79 @@ def invoke_gemini_model(model, prompt: str, max_tokens: int = 2000, temperature:
             generation_config=generation_config
         )
         
-        return response.text.strip()
+        # Check if response has valid candidates and parts
+        if not response.candidates:
+            raise ValueError("No candidates returned in response")
         
+        candidate = response.candidates[0]
+        
+        # Get finish_reason (could be int, enum, or string)
+        finish_reason = getattr(candidate, 'finish_reason', None)
+        if finish_reason is not None:
+            # Convert to string representation if it's an enum or int
+            try:
+                finish_reason_str = str(finish_reason)
+                # If it's an enum, try to get the name
+                if hasattr(finish_reason, 'name'):
+                    finish_reason_str = finish_reason.name
+                elif isinstance(finish_reason, int):
+                    finish_reason_map = {
+                        0: "FINISH_REASON_UNSPECIFIED",
+                        1: "STOP",
+                        2: "MAX_TOKENS",
+                        3: "SAFETY",
+                        4: "RECITATION",
+                        5: "OTHER"
+                    }
+                    finish_reason_str = finish_reason_map.get(finish_reason, f"UNKNOWN({finish_reason})")
+            except Exception:
+                finish_reason_str = str(finish_reason)
+        else:
+            finish_reason_str = "UNKNOWN"
+        
+        # Check if candidate has parts before accessing text
+        has_parts = False
+        if hasattr(candidate, 'content') and candidate.content:
+            if hasattr(candidate.content, 'parts') and candidate.content.parts:
+                has_parts = True
+        
+        if not has_parts:
+            error_msg = f"Response blocked or filtered. Finish reason: {finish_reason_str}"
+            if finish_reason:
+                finish_reason_val = finish_reason
+                if hasattr(finish_reason, 'value'):
+                    finish_reason_val = finish_reason.value
+                elif not isinstance(finish_reason, int):
+                    finish_reason_val = None
+                
+                if finish_reason_val == 3 or (isinstance(finish_reason_str, str) and 'SAFETY' in finish_reason_str.upper()):
+                    error_msg += " (Content was blocked by safety filters)"
+                elif finish_reason_val == 4 or (isinstance(finish_reason_str, str) and 'RECITATION' in finish_reason_str.upper()):
+                    error_msg += " (Content was blocked due to recitation detection)"
+                elif finish_reason_val == 2 or (isinstance(finish_reason_str, str) and 'MAX_TOKENS' in finish_reason_str.upper()):
+                    error_msg += " (Response exceeded max tokens, but no content was returned)"
+            raise ValueError(error_msg)
+        
+        # Try to get text from parts
+        try:
+            return response.text.strip()
+        except (ValueError, AttributeError) as e:
+            # Fallback: try to extract text manually from parts
+            text_parts = []
+            if hasattr(candidate, 'content') and candidate.content and hasattr(candidate.content, 'parts'):
+                for part in candidate.content.parts:
+                    if hasattr(part, 'text') and part.text:
+                        text_parts.append(part.text)
+            
+            if text_parts:
+                return " ".join(text_parts).strip()
+            else:
+                raise ValueError(f"Could not extract text from response. Finish reason: {finish_reason_str}")
+        
+    except ValueError as e:
+        # Re-raise ValueError with better context
+        print(f"Error invoking Gemini model: {e}")
+        raise
     except Exception as e:
         print(f"Error invoking Gemini model: {e}")
         raise
@@ -504,25 +575,304 @@ def summarize_transcript(model, transcript: str) -> str:
         "Focus on the main points and key takeaways. Create a structure with some bullet points that is easy to understand and follow.\n\nTranscript:\n" + transcript
     )
     print("\nSummarizing transcript with Gemini...")
-    summary = invoke_gemini_model(model, prompt, max_tokens=2000, temperature=0.3)
+    summary = invoke_gemini_model(model, prompt, max_tokens=8000, temperature=0.3)
     # Remove <think>...</think> section if present (multiline)
     summary = re.sub(r'<think>[\s\S]*?</think>', '', summary, flags=re.DOTALL).strip()
     print("\n===== SUMMARY =====\n" + summary + "\n===================\n")
     return summary
 
-def answer_question(model, question: str, chat_history: list, initial_context: list) -> str:
-    # Compose the full prompt with context and chat history
+def chunk_text(text: str, chunk_size: int = 20000, overlap: int = 2000) -> list[str]:
+    """
+    Split text into chunks with overlapping windows.
+    
+    Args:
+        text: The text to chunk
+        chunk_size: Size of each chunk in characters
+        overlap: Number of characters to overlap between chunks
+    
+    Returns:
+        List of text chunks
+    """
+    if len(text) <= chunk_size:
+        return [text]
+    
+    chunks = []
+    start = 0
+    
+    while start < len(text):
+        end = start + chunk_size
+        chunk = text[start:end]
+        chunks.append(chunk)
+        
+        # Move start position forward, accounting for overlap
+        start = end - overlap
+        
+        # If we've reached the end, break
+        if end >= len(text):
+            break
+    
+    return chunks
+
+def process_chunk_for_question(model, chunk: str, question: str, chunk_index: int, total_chunks: int, max_retries: int = 3) -> dict:
+    """
+    Process a single transcript chunk to answer a question.
+    Returns JSON with answer and relevance flag.
+    
+    Args:
+        model: Gemini model instance
+        chunk: Text chunk to process
+        question: The question to answer
+        chunk_index: Index of this chunk (0-based)
+        total_chunks: Total number of chunks
+        max_retries: Maximum number of retries on error
+    
+    Returns:
+        Dictionary with 'answer', 'is_relevant', and 'chunk_index'
+    """
+    # Reduce chunk size if it's too long (to avoid MAX_TOKENS errors)
+    # If chunk is > 10k chars, truncate it
+    if len(chunk) > 10000:
+        chunk = chunk[:10000] + "... [truncated]"
+    
+    prompt = f"""You are analyzing a portion of a YouTube video transcript (chunk {chunk_index + 1} of {total_chunks}).
+
+Question: {question}
+
+Transcript chunk:
+{chunk}
+
+Please analyze this chunk and provide a JSON response with the following structure:
+{{
+    "is_relevant": true/false,  // Whether this chunk contains information relevant to answering the question
+    "answer": "Your answer based on this chunk, or empty string if not relevant"
+}}
+
+If the chunk is relevant, provide a concise answer based on this chunk. If not relevant, set is_relevant to false and answer to empty string.
+Return ONLY valid JSON, no other text."""
+
+    response_text = None
+    last_exception = None
+    
+    for attempt in range(max_retries):
+        try:
+            # Reduce max_tokens on retry to avoid MAX_TOKENS errors
+            max_tokens = 3000 if attempt > 0 else 4000
+            
+            response_text = invoke_gemini_model(model, prompt, max_tokens=max_tokens, temperature=0.3)
+            
+            # Try to extract JSON from response (in case there's extra text)
+            json_match = re.search(r'\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\}', response_text, re.DOTALL)
+            if json_match:
+                response_text = json_match.group(0)
+            
+            result = json.loads(response_text)
+            
+            # Validate structure
+            if 'is_relevant' not in result or 'answer' not in result:
+                return {
+                    'is_relevant': False,
+                    'answer': '',
+                    'chunk_index': chunk_index
+                }
+            
+            result['chunk_index'] = chunk_index
+            return result
+            
+        except ValueError as e:
+            # MAX_TOKENS or other model errors
+            last_exception = e
+            if attempt < max_retries - 1:
+                wait_time = (attempt + 1) * 2  # Exponential backoff: 2s, 4s, 6s
+                logging.warning(f"Error processing chunk {chunk_index + 1} (attempt {attempt + 1}/{max_retries}): {e}. Retrying in {wait_time}s...")
+                time.sleep(wait_time)
+                # Try reducing chunk size further on retry
+                if "MAX_TOKENS" in str(e) and len(chunk) > 10000:
+                    chunk = chunk[:10000] + "... [truncated]"
+                    prompt = f"""You are analyzing a portion of a YouTube video transcript (chunk {chunk_index + 1} of {total_chunks}).
+
+Question: {question}
+
+Transcript chunk:
+{chunk}
+
+Please analyze this chunk and provide a JSON response with the following structure:
+{{
+    "is_relevant": true/false,
+    "answer": "Your answer based on this chunk, or empty string if not relevant"
+}}
+
+Return ONLY valid JSON, no other text."""
+            else:
+                # Last attempt or non-retryable error
+                break
+                
+        except json.JSONDecodeError as e:
+            # JSON parsing error - we have response_text but it's not valid JSON
+            last_exception = e
+            if attempt < max_retries - 1:
+                wait_time = (attempt + 1) * 2
+                logging.warning(f"JSON parsing error for chunk {chunk_index + 1} (attempt {attempt + 1}/{max_retries}): {e}. Retrying in {wait_time}s...")
+                time.sleep(wait_time)
+            else:
+                # Last attempt - try to extract something useful
+                if response_text and len(response_text.strip()) > 20:
+                    # Try to infer relevance from response text
+                    return {
+                        'is_relevant': True,  # Assume relevant if we got substantial text
+                        'answer': response_text.strip()[:500],  # Limit answer length
+                        'chunk_index': chunk_index
+                    }
+                break
+    
+    # If we get here, all retries failed
+    logging.error(f"Failed to process chunk {chunk_index + 1} after {max_retries} attempts: {last_exception}")
+    
+    # Return a safe default
+    return {
+        'is_relevant': False,
+        'answer': '',
+        'chunk_index': chunk_index
+    }
+
+def combine_chunk_answers(model, relevant_answers: list[dict], question: str, summary: str) -> str:
+    """
+    Combine answers from relevant chunks and generate final answer.
+    
+    Args:
+        model: Gemini model instance
+        relevant_answers: List of dicts with 'answer' and 'chunk_index' from relevant chunks
+        question: The original question
+        summary: The video summary for context
+    
+    Returns:
+        Final combined answer
+    """
+    if not relevant_answers:
+        return "I couldn't find relevant information in the transcript to answer this question."
+    
+    # Combine all relevant answers
+    combined_answers = "\n\n".join([
+        f"Answer from chunk {ans['chunk_index'] + 1}:\n{ans['answer']}"
+        for ans in relevant_answers
+        if ans.get('is_relevant', False) and ans.get('answer', '').strip()
+    ])
+    
+    prompt = f"""You are answering a question about a YouTube video based on multiple relevant transcript chunks.
+
+Question: {question}
+
+Video Summary (for context):
+{summary}
+
+Relevant information from transcript chunks:
+{combined_answers}
+
+Please provide a comprehensive, coherent answer that synthesizes the information from all relevant chunks. 
+If there are contradictions or different perspectives, mention them. 
+Make sure your answer is well-structured and directly addresses the question."""
+
+    final_answer = invoke_gemini_model(model, prompt, max_tokens=16000, temperature=0.3)
+    return final_answer.strip()
+
+def answer_question_with_chunking(model, question: str, transcript: str, summary: str, chat_history: list, initial_context: list) -> str:
+    """
+    Answer a question using chunking approach for long transcripts.
+    
+    Args:
+        model: Gemini model instance
+        question: The question to answer
+        transcript: Full transcript text
+        summary: Video summary
+        chat_history: Previous Q&A pairs
+        initial_context: Initial context messages
+    
+    Returns:
+        Final answer
+    """
+    # Estimate transcript size (roughly 4 chars per token, but be conservative)
+    # Use chunking if transcript is > 20k characters (roughly 5k tokens)
+    CHUNK_THRESHOLD = 20000
+    
+    if len(transcript) <= CHUNK_THRESHOLD:
+        # Transcript is short enough, use regular approach
+        prompt_parts = []
+        for msg in initial_context:
+            if msg["role"] == "system":
+                prompt_parts.append(f"System: {msg['content']}")
+            elif msg["role"] == "user":
+                prompt_parts.append(f"User: {msg['content']}")
+        
+        recent_history = chat_history[-10:] if len(chat_history) > 10 else chat_history
+        for turn in recent_history:
+            prompt_parts.append(f"User: {turn['question']}")
+            prompt_parts.append(f"Assistant: {turn['answer']}")
+        
+        prompt_parts.append(f"User: {question}")
+        prompt_parts.append(f"User: Here is the full transcript for detailed reference:\n{transcript}")
+        
+        prompt = "\n\n".join(prompt_parts)
+        answer = invoke_gemini_model(model, prompt, max_tokens=16000, temperature=0.3)
+        answer = re.sub(r'<think>[\s\S]*?</think>', '', answer, flags=re.DOTALL).strip()
+        return answer
+    
+    # Use chunking approach
+    print(f"\nTranscript is long ({len(transcript)} chars). Using chunking approach...")
+    
+    # Split transcript into chunks (use smaller size to avoid MAX_TOKENS errors)
+    chunks = chunk_text(transcript, chunk_size=12000, overlap=1500)
+    print(f"Split transcript into {len(chunks)} chunks. Processing each chunk...")
+    
+    # Process each chunk
+    chunk_results = []
+    for i, chunk in enumerate(chunks):
+        print(f"Processing chunk {i + 1}/{len(chunks)}...", end='', flush=True)
+        result = process_chunk_for_question(model, chunk, question, i, len(chunks))
+        chunk_results.append(result)
+        if result.get('is_relevant', False):
+            print(f" ✓ (relevant)")
+        else:
+            print(f" - (not relevant)")
+    
+    # Filter to only relevant chunks
+    relevant_answers = [r for r in chunk_results if r.get('is_relevant', False) and r.get('answer', '').strip()]
+    
+    print(f"\nFound {len(relevant_answers)} relevant chunk(s). Combining answers...")
+    
+    # Combine relevant answers
+    final_answer = combine_chunk_answers(model, relevant_answers, question, summary)
+    
+    return final_answer
+
+def answer_question(model, question: str, chat_history: list, initial_context: list, transcript: str = None) -> str:
+    # Extract summary from initial_context
+    summary = ""
+    for msg in initial_context:
+        if msg["role"] == "user" and "summary" in msg['content'].lower():
+            # Extract summary text
+            content = msg['content']
+            if "Here is a summary of the video:" in content:
+                summary = content.split("Here is a summary of the video:")[1].split("\n\nThe full transcript")[0].strip()
+            break
+    
+    # If transcript is provided, use chunking approach for long transcripts
+    if transcript:
+        return answer_question_with_chunking(model, question, transcript, summary, chat_history, initial_context)
+    
+    # Otherwise, use regular approach without transcript
     prompt_parts = []
     
-    # Add initial context
+    # Add initial context (system message and summary)
     for msg in initial_context:
         if msg["role"] == "system":
             prompt_parts.append(f"System: {msg['content']}")
         elif msg["role"] == "user":
             prompt_parts.append(f"User: {msg['content']}")
     
+    # Limit chat history to last 10 exchanges to avoid prompt bloat
+    recent_history = chat_history[-10:] if len(chat_history) > 10 else chat_history
+    
     # Add chat history
-    for turn in chat_history:
+    for turn in recent_history:
         prompt_parts.append(f"User: {turn['question']}")
         prompt_parts.append(f"Assistant: {turn['answer']}")
     
@@ -532,7 +882,7 @@ def answer_question(model, question: str, chat_history: list, initial_context: l
     # Join all parts
     prompt = "\n\n".join(prompt_parts)
     
-    answer = invoke_gemini_model(model, prompt, max_tokens=5000, temperature=0.3)
+    answer = invoke_gemini_model(model, prompt, max_tokens=16000, temperature=0.3)
     # Remove <think>...</think> section if present (multiline)
     answer = re.sub(r'<think>[\s\S]*?</think>', '', answer, flags=re.DOTALL).strip()
     return answer
@@ -672,9 +1022,11 @@ def main():
     summary = summarize_transcript(model, transcript_dict['transcript'])
     chat_history = []
     # Prepare initial context (system and user messages)
+    # Store transcript separately - don't include it in every request to avoid prompt bloat
+    transcript_text = transcript_dict['transcript']
     initial_context = [
         {"role": "system", "content": "You are a helpful assistant that answers questions about a YouTube video based on its transcript and summary."},
-        {"role": "user", "content": f"Here is a summary of the video: {summary}\n\nHere is the full transcript (for reference):\n{transcript_dict['transcript']}"}
+        {"role": "user", "content": f"Here is a summary of the video: {summary}\n\nThe full transcript is available if you need specific details, but try to answer based on the summary first."}
     ]
     print("\nYou can now ask questions about the video. Type 'exit' to quit, or enter a new YouTube URL to start over.")
     while True:
@@ -711,13 +1063,14 @@ def main():
             add_to_url_history(question, title)
             summary = summarize_transcript(model, transcript_dict['transcript'])
             chat_history = []
+            transcript_text = transcript_dict['transcript']
             initial_context = [
                 {"role": "system", "content": "You are a helpful assistant that answers questions about a YouTube video based on its transcript and summary."},
-                {"role": "user", "content": f"Here is a summary of the video: {summary}\n\nHere is the full transcript (for reference):\n{transcript_dict['transcript']}"}
+                {"role": "user", "content": f"Here is a summary of the video: {summary}\n\nThe full transcript is available if you need specific details, but try to answer based on the summary first."}
             ]
             print("\nYou can now ask questions about the new video. Type 'exit' to quit, or enter a new YouTube URL to start over.")
             continue
-        answer = answer_question(model, question, chat_history, initial_context)
+        answer = answer_question(model, question, chat_history, initial_context, transcript_text)
         print("\nAnswer:", answer)
         chat_history.append({"question": question, "answer": answer})
 
