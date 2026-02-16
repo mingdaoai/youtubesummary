@@ -36,6 +36,161 @@ except ImportError:
     if not MULTI_TOR_AVAILABLE:
         print("PySocks not installed. Install with: pip install PySocks")
 
+# ========== PROXY CONFIGURATION ==========
+def get_proxy_config():
+    """
+    Get proxy configuration from environment variables or config file.
+    Priority: Environment variables > Config file > No proxy
+    
+    Environment variables:
+    - HTTP_PROXY / http_proxy: HTTP proxy URL
+    - HTTPS_PROXY / https_proxy: HTTPS proxy URL
+    - SOCKS_PROXY / socks_proxy: SOCKS proxy URL (e.g., socks5://127.0.0.1:9050)
+    - USE_TOR: Set to 'true' to use Tor proxy at 127.0.0.1:9050
+    
+    Returns:
+        dict with 'http', 'https', 'socks' keys or None if no proxy configured
+    """
+    proxy_config = {}
+    
+    # Check for SOCKS proxy (highest priority for Tor)
+    socks_proxy = os.environ.get('SOCKS_PROXY') or os.environ.get('socks_proxy')
+    use_tor = os.environ.get('USE_TOR', '').lower() == 'true'
+    
+    if socks_proxy:
+        proxy_config['socks'] = socks_proxy
+    elif use_tor:
+        proxy_config['socks'] = 'socks5://127.0.0.1:9050'
+    
+    # Check for HTTP/HTTPS proxies
+    http_proxy = os.environ.get('HTTP_PROXY') or os.environ.get('http_proxy')
+    https_proxy = os.environ.get('HTTPS_PROXY') or os.environ.get('https_proxy')
+    
+    if http_proxy:
+        proxy_config['http'] = http_proxy
+    if https_proxy:
+        proxy_config['https'] = https_proxy
+    
+    # Try to load from config file if no env vars set
+    if not proxy_config:
+        config_path = Path(__file__).parent / ".proxy_config.json"
+        if config_path.exists():
+            try:
+                with open(config_path, 'r') as f:
+                    file_config = json.load(f)
+                    proxy_config.update(file_config)
+            except Exception as e:
+                logging.warning(f"Failed to load proxy config from file: {e}")
+    
+    return proxy_config if proxy_config else None
+
+def get_ytdlp_proxy_opts(proxy_config):
+    """
+    Convert proxy config to yt-dlp options.
+    
+    Args:
+        proxy_config: Dict with proxy settings
+        
+    Returns:
+        Dict with yt-dlp proxy options
+    """
+    if not proxy_config:
+        return {}
+    
+    opts = {}
+    
+    # yt-dlp supports SOCKS proxies directly
+    if 'socks' in proxy_config:
+        opts['proxy'] = proxy_config['socks']
+    elif 'https' in proxy_config:
+        opts['proxy'] = proxy_config['https']
+    elif 'http' in proxy_config:
+        opts['proxy'] = proxy_config['http']
+    
+    return opts
+
+def get_requests_proxies(proxy_config):
+    """
+    Convert proxy config to requests proxies format.
+    
+    Args:
+        proxy_config: Dict with proxy settings
+        
+    Returns:
+        Dict suitable for requests library
+    """
+    if not proxy_config:
+        return None
+    
+    proxies = {}
+    
+    if 'http' in proxy_config:
+        proxies['http'] = proxy_config['http']
+    if 'https' in proxy_config:
+        proxies['https'] = proxy_config['https']
+    
+    # For SOCKS, requests needs requests[socks] installed
+    if 'socks' in proxy_config:
+        # SOCKS proxy works for both http and https
+        proxies['http'] = proxy_config['socks']
+        proxies['https'] = proxy_config['socks']
+    
+    return proxies if proxies else None
+
+# Global proxy configuration
+PROXY_CONFIG = get_proxy_config()
+REQUESTS_PROXIES = get_requests_proxies(PROXY_CONFIG)
+YTDL_PROXY_OPTS = get_ytdlp_proxy_opts(PROXY_CONFIG)
+
+def save_proxy_config(proxy_config):
+    """Save proxy configuration to file."""
+    config_path = Path(__file__).parent / ".proxy_config.json"
+    try:
+        with open(config_path, 'w') as f:
+            json.dump(proxy_config, f, indent=2)
+        return True
+    except Exception as e:
+        logging.error(f"Failed to save proxy config: {e}")
+        return False
+
+def configure_proxies_interactive():
+    """Interactive proxy configuration."""
+    print("\n=== Proxy Configuration ===")
+    print("Configure proxies for YouTube downloads.")
+    print("Leave blank to skip a proxy type.\n")
+    
+    config = {}
+    
+    # SOCKS proxy (for Tor)
+    print("SOCKS proxy (for Tor, e.g., socks5://127.0.0.1:9050):")
+    socks = input("  SOCKS proxy URL: ").strip()
+    if socks:
+        config['socks'] = socks
+    
+    # HTTP proxy
+    print("\nHTTP proxy (e.g., http://proxy.example.com:8080):")
+    http = input("  HTTP proxy URL: ").strip()
+    if http:
+        config['http'] = http
+    
+    # HTTPS proxy
+    print("\nHTTPS proxy (e.g., https://proxy.example.com:8080):")
+    https = input("  HTTPS proxy URL: ").strip()
+    if https:
+        config['https'] = https
+    
+    if config:
+        if save_proxy_config(config):
+            print("✅ Proxy configuration saved!")
+            print(f"   Config file: {Path(__file__).parent / '.proxy_config.json'}")
+            return config
+        else:
+            print("❌ Failed to save proxy configuration")
+            return None
+    else:
+        print("No proxies configured.")
+        return None
+
 # ========== CONFIGURATION ==========
 CACHE_DIR = Path(__file__).parent / ".cache"
 CACHE_DIR.mkdir(exist_ok=True)
@@ -97,11 +252,11 @@ def cache_transcript(video_id: str, transcript: str, language: str, title: str =
 
 def try_youtube_transcript(video_id):
     """
-    Try to extract transcript using multi-Tor only (no fallback methods).
+    Try to extract transcript using multi-Tor or configured proxies.
     Returns a dict with 'transcript' and 'language' or None if not available.
     """
     try:
-        # Only use multi-Tor approach if available
+        # First try multi-Tor approach if available
         if MULTI_TOR_AVAILABLE:
             logging.info("Using multi-Tor for transcript download")
             logging.info(f"🎯 Target video: https://www.youtube.com/watch?v={video_id}")
@@ -118,17 +273,42 @@ def try_youtube_transcript(video_id):
                     logging.info(f"📊 Multi-Tor stats: {downloader.get_proxy_stats()}")
                     return {"transcript": transcript_text, "language": language}
                 else:
-                    logging.error("❌ Multi-Tor failed to get transcript - no fallback methods available")
+                    logging.error("❌ Multi-Tor failed to get transcript - trying fallback methods")
                     logging.info(f"📊 Multi-Tor final stats: {downloader.get_proxy_stats()}")
-                    return None
             except Exception as e:
-                logging.error(f"❌ Multi-Tor failed with exception: {e} - no fallback methods available")
+                logging.error(f"❌ Multi-Tor failed with exception: {e} - trying fallback methods")
                 import traceback
                 logging.debug(f"Multi-Tor exception traceback: {traceback.format_exc()}")
-                return None
-        else:
-            logging.error("❌ Multi-Tor not available and no fallback methods configured")
-            return None
+        
+        # Fallback: Try with configured proxies
+        if PROXY_CONFIG:
+            logging.info(f"Trying transcript download with proxy configuration: {PROXY_CONFIG}")
+            try:
+                # Use youtubeTranscript module with proxy support
+                transcript_result = download_youtube_transcript(
+                    video_id, 
+                    proxy=PROXY_CONFIG.get('socks') or PROXY_CONFIG.get('https') or PROXY_CONFIG.get('http')
+                )
+                if transcript_result:
+                    cache_transcript(video_id, transcript_result['transcript'], transcript_result['language'])
+                    logging.info(f"✅ Successfully downloaded transcript using proxy")
+                    return transcript_result
+            except Exception as e:
+                logging.warning(f"Proxy transcript download failed: {e}")
+        
+        # Last resort: Try direct connection
+        logging.info("Trying direct connection for transcript download")
+        try:
+            transcript_result = download_youtube_transcript(video_id)
+            if transcript_result:
+                cache_transcript(video_id, transcript_result['transcript'], transcript_result['language'])
+                logging.info(f"✅ Successfully downloaded transcript via direct connection")
+                return transcript_result
+        except Exception as e:
+            logging.error(f"Direct transcript download failed: {e}")
+        
+        logging.error("❌ All transcript download methods failed")
+        return None
         
     except Exception as e:
         import traceback
@@ -149,10 +329,15 @@ def transcribe_with_whisper(mp3_path):
         raise
 
 def download_video_if_needed(video_id, video_url, video_path):
+    """Download video with proxy support."""
+    # Build base yt-dlp options with proxy support
+    base_opts = {"quiet": True}
+    base_opts.update(YTDL_PROXY_OPTS)
+    
     if video_path.exists():
         logging.info(f"Video file {video_path} already exists. Using cached mp4 for transcription.")
         try:
-            with yt_dlp.YoutubeDL({"quiet": True}) as ydl:
+            with yt_dlp.YoutubeDL(base_opts) as ydl:
                 info = ydl.extract_info(video_url, download=False)
                 title = info.get('title', '')
         except Exception as e:
@@ -177,9 +362,16 @@ def download_video_if_needed(video_id, video_url, video_path):
                 'format': fmt,
                 'merge_output_format': 'mp4',
             }
+            # Add proxy configuration
+            ydl_opts.update(YTDL_PROXY_OPTS)
+            
             if os.path.exists(cookies_path):
                 ydl_opts['cookiefile'] = cookies_path
                 logging.info(f"Using cookies from {cookies_path}")
+            
+            if PROXY_CONFIG:
+                logging.info(f"Using proxy for download: {YTDL_PROXY_OPTS.get('proxy', 'none')}")
+            
             try:
                 with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                     info = ydl.extract_info(video_url, download=True)
@@ -193,6 +385,9 @@ def download_video_if_needed(video_id, video_url, video_path):
                     logging.warning("\nHTTP 403 Forbidden error detected. This may be due to age restriction, region lock, or YouTube signature changes.\n")
                     logging.warning("Try updating yt-dlp: pip install -U yt-dlp")
                     logging.warning("If the video requires login, export your YouTube cookies as cookies.txt and place it in the current directory.")
+                    if PROXY_CONFIG:
+                        logging.warning(f"Current proxy configuration: {PROXY_CONFIG}")
+                        logging.warning("Try disabling proxy or using a different proxy.")
                 continue
         else:
             logging.error("All format attempts failed.")
@@ -351,7 +546,9 @@ def download_transcript(video_id: str) -> dict:
                 title = None
         if not title:
             try:
-                with yt_dlp.YoutubeDL({"quiet": True}) as ydl:
+                ydl_opts = {"quiet": True}
+                ydl_opts.update(YTDL_PROXY_OPTS)
+                with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                     info = ydl.extract_info(f"https://www.youtube.com/watch?v={video_id}", download=False)
                     title = info.get('title')
             except Exception:
@@ -462,7 +659,9 @@ def get_transcript(video_id: str) -> dict:
         # Try to ensure title is present in cache
         if 'title' not in cached or not cached['title']:
             try:
-                with yt_dlp.YoutubeDL({"quiet": True}) as ydl:
+                ydl_opts = {"quiet": True}
+                ydl_opts.update(YTDL_PROXY_OPTS)
+                with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                     info = ydl.extract_info(f"https://www.youtube.com/watch?v={video_id}", download=False)
                     title = info.get('title')
             except Exception:
@@ -925,6 +1124,21 @@ def add_to_url_history(url, title):
 def main():
     print("YouTube Video Summarizer & Chatbot (Claude 3.5 Sonnet on AWS Bedrock)")
     
+    # Display proxy configuration status
+    if PROXY_CONFIG:
+        print(f"🔌 Proxy configuration detected:")
+        for proxy_type, proxy_url in PROXY_CONFIG.items():
+            # Mask credentials in proxy URL for security
+            masked_url = proxy_url
+            if '@' in proxy_url:
+                # URL has credentials, mask them
+                parts = proxy_url.split('@')
+                protocol = parts[0].split('://')[0]
+                masked_url = f"{protocol}://***:***@{parts[1]}"
+            print(f"   {proxy_type.upper()}: {masked_url}")
+    else:
+        print("🔌 No proxy configured - using direct connection")
+    
     # Check Tor status
     if MULTI_TOR_AVAILABLE:
         print("✅ Multi-Tor setup detected - will use for transcript downloading")
@@ -947,6 +1161,8 @@ def main():
             print(f"✅ {tor_instances_running} Tor instances running - will use multi-Tor for transcript downloading")
         else:
             print("⚠️ No Tor instances running - start with: /Users/haha/github/multi-tor/tor-manager.sh start")
+            if PROXY_CONFIG:
+                print("📡 Will fall back to configured proxy for downloads")
     elif TOR_AVAILABLE:
         try:
             import socket
@@ -958,10 +1174,16 @@ def main():
                 print("✅ Single Tor proxy detected - will use for transcript downloading")
             else:
                 print("⚠️ Tor not running - will use direct connection (may be blocked)")
+                if PROXY_CONFIG:
+                    print("📡 Will use configured proxy instead")
         except Exception:
             print("⚠️ Tor not running - will use direct connection (may be blocked)")
+            if PROXY_CONFIG:
+                print("📡 Will use configured proxy instead")
     else:
         print("⚠️ PySocks not installed - install with: pip install PySocks")
+        if PROXY_CONFIG:
+            print("📡 Will use HTTP/HTTPS proxy instead of SOCKS")
     # Load history and prompt user
     url_history = load_url_history()
     url = None
@@ -1011,9 +1233,11 @@ def main():
         except Exception:
             title = None
     if not title:
-        # Try yt-dlp to get title
+        # Try yt-dlp to get title (with proxy support)
         try:
-            with yt_dlp.YoutubeDL({"quiet": True}) as ydl:
+            ydl_opts = {"quiet": True}
+            ydl_opts.update(YTDL_PROXY_OPTS)
+            with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 info = ydl.extract_info(url, download=False)
                 title = info.get('title', url)
         except Exception:
@@ -1055,7 +1279,9 @@ def main():
                     title = None
             if not title:
                 try:
-                    with yt_dlp.YoutubeDL({"quiet": True}) as ydl:
+                    ydl_opts = {"quiet": True}
+                    ydl_opts.update(YTDL_PROXY_OPTS)
+                    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                         info = ydl.extract_info(question, download=False)
                         title = info.get('title', question)
                 except Exception:
