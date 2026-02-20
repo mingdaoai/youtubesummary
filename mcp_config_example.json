@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "youtube-summarizer": {
+      "command": "python3",
+      "args": ["/Users/haha/github/youtubesummary/mcp_youtube_summarizer.py"]
+    }
+  }
+}
