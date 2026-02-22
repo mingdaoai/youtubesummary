@@ -62,7 +62,7 @@ def setup_logger(
     file_handler.setLevel(file_level)
     file_handler.setFormatter(FORMATTER)
 
-    console_handler = logging.StreamHandler(sys.stdout)
+    console_handler = logging.StreamHandler(sys.stderr)
     console_handler.setLevel(console_level)
     console_handler.setFormatter(FORMATTER)
 

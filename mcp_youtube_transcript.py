@@ -8,15 +8,20 @@
 #     "yt-dlp>=2023.1.6",
 #     "mcp>=0.3.0",
 #     "beautifulsoup4>=4.14.3",
+#     "google-genai>=0.3.0",
+#     "openai-whisper>=20231117",
 # ]
 # ///
 """
 MCP Server for YouTube Transcript Extraction
 
 This MCP server provides tools to get YouTube video transcripts based on URL or video ID.
+Uses caching for extremely fast second-time retrieval.
 """
 
+import logging
 import re
+import time
 from typing import Optional
 
 try:
@@ -27,17 +32,36 @@ except ImportError:
     except ImportError:
         raise ImportError("mcp library not installed. Run: pip install mcp")
 
-from youtubeTranscript import extract_video_id, download_youtube_transcript, get_available_languages
+from youtubeSummarize import get_transcript, extract_video_id, get_available_languages
 from logging_utils import setup_logger, flush_logger
 
+# MCP server uses stdio for protocol - disable console logging to avoid interference
+# Logs will still be written to file
 logger = setup_logger(__name__)
+# Remove console handler (stdout/stderr) to prevent MCP protocol corruption
+for handler in logger.handlers[:]:
+    if isinstance(handler, logging.StreamHandler) and not isinstance(handler, logging.FileHandler):
+        logger.removeHandler(handler)
+
+# FastMCP adds a RichHandler to the root logger - remove it to prevent stdout interference
+import logging as _logging
+for handler in _logging.root.handlers[:]:
+    if hasattr(handler, '__class__') and 'RichHandler' in handler.__class__.__name__:
+        _logging.root.removeHandler(handler)
+# Also disable propagation to prevent logs bubbling up to root
+logger.propagate = False
 
 # Initialize the MCP server
 mcp = FastMCP("YouTube Transcript Server")
 
 
 @mcp.tool()
-def get_youtube_transcript(url: str, language_codes: Optional[list[str]] = None) -> str:  # type: ignore
+def get_youtube_transcript(
+    url: str,
+    language_codes: Optional[list[str]] = None,
+    offset: int = 0,
+    limit: Optional[int] = None
+) -> str:  # type: ignore
     """
     Get the transcript of a YouTube video from its URL or video ID.
     
@@ -45,37 +69,82 @@ def get_youtube_transcript(url: str, language_codes: Optional[list[str]] = None)
         url: YouTube URL (e.g., "https://www.youtube.com/watch?v=VIDEO_ID") or just video ID
         language_codes: Optional list of preferred language codes (e.g., ["en", "en-US"])
                        If None, will use any available transcript
+        offset: Starting character position for pagination (default: 0)
+        limit: Maximum number of characters to return. If None, returns full transcript.
+               Use for large transcripts to avoid token limits.
     
     Returns:
-        Transcript text as a string
+        JSON string with transcript and pagination metadata:
+        - content: The transcript text (paginated if limit specified)
+        - total_length: Total characters in full transcript
+        - offset: Current offset position
+        - returned_length: Characters returned in this response
+        - has_more: Boolean indicating if more content available
         
     Example:
         url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
         language_codes: ["en", "en-US"]
+        offset: 0
+        limit: 10000
     """
+    import json as _json
     try:
-        logger.info(f"Getting transcript for: {url}")
+        start_time = time.time()
+        logger.info(f"Getting transcript for: {url}, offset={offset}, limit={limit}")
         
-        # If the input looks like just a video ID, add the YouTube URL prefix
-        if not url.startswith(('http://', 'https://')):
-            url = f"https://www.youtube.com/watch?v={url}"
+        if url.startswith(('http://', 'https://')):
+            video_id = extract_video_id(url)
+        else:
+            video_id = url
         
-        # Download transcript
-        transcript = download_youtube_transcript(url, language_codes=language_codes)
+        if not video_id:
+            error_msg = f"Could not extract video ID from URL: {url}"
+            logger.error(error_msg)
+            return _json.dumps({"error": error_msg})
         
-        if transcript:
-            logger.info(f"Successfully retrieved transcript ({len(transcript)} characters)")
-            return transcript
+        result = get_transcript(video_id)
+        
+        elapsed = time.time() - start_time
+        
+        if result and 'transcript' in result:
+            full_transcript = result['transcript']
+            total_length = len(full_transcript)
+            
+            if limit is None:
+                paginated_content = full_transcript
+                returned_length = total_length
+                has_more = False
+                actual_offset = 0
+            else:
+                actual_offset = max(0, min(offset, total_length))
+                paginated_content = full_transcript[actual_offset:actual_offset + limit]
+                returned_length = len(paginated_content)
+                has_more = (actual_offset + limit) < total_length
+            
+            response = {
+                "content": paginated_content,
+                "total_length": total_length,
+                "offset": actual_offset if limit else 0,
+                "returned_length": returned_length,
+                "has_more": has_more,
+                "video_id": video_id,
+                "language": result.get('language'),
+                "title": result.get('title'),
+                "fetch_time_seconds": round(elapsed, 2)
+            }
+            
+            logger.info(f"Retrieved transcript ({returned_length}/{total_length} chars) in {elapsed:.2f}s")
+            return _json.dumps(response, ensure_ascii=False)
         else:
             error_msg = "Failed to retrieve transcript. The video may not have captions available."
             logger.error(error_msg)
-            return error_msg
+            return _json.dumps({"error": error_msg})
             
     except Exception as e:
         error_msg = f"Error getting transcript: {str(e)}"
         logger.error(error_msg, exc_info=True)
         flush_logger(logger)
-        return error_msg
+        return _json.dumps({"error": error_msg})
 
 
 @mcp.tool()
