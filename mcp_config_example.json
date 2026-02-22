@@ -1,8 +1,20 @@
 {
   "mcpServers": {
     "youtube-summarizer": {
-      "command": "python3",
-      "args": ["/Users/haha/github/youtubesummary/mcp_youtube_summarizer.py"]
+      "command": "uv",
+      "args": ["run", "--script", "mcp_youtube_summarizer.py"],
+      "cwd": "/Users/haha/github/youtubesummary",
+      "env": {
+        "PYTHONPATH": ""
+      }
+    },
+    "youtube-transcript": {
+      "command": "uv",
+      "args": ["run", "--script", "mcp_youtube_transcript.py"],
+      "cwd": "/Users/haha/github/youtubesummary",
+      "env": {
+        "PYTHONPATH": ""
+      }
     }
   }
 }

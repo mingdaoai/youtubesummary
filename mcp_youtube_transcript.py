@@ -1,4 +1,15 @@
-#!/usr/bin/env python3
+#!/usr/bin/env uv run --script
+# /// script
+# requires-python = ">=3.10"
+# dependencies = [
+#     "youtube-transcript-api>=0.6.2",
+#     "requests>=2.25.0",
+#     "boto3>=1.26.0",
+#     "yt-dlp>=2023.1.6",
+#     "mcp>=0.3.0",
+#     "beautifulsoup4>=4.14.3",
+# ]
+# ///
 """
 MCP Server for YouTube Transcript Extraction
 
@@ -6,7 +17,6 @@ This MCP server provides tools to get YouTube video transcripts based on URL or 
 """
 
 import re
-import logging
 from typing import Optional
 
 try:
@@ -18,13 +28,9 @@ except ImportError:
         raise ImportError("mcp library not installed. Run: pip install mcp")
 
 from youtubeTranscript import extract_video_id, download_youtube_transcript, get_available_languages
+from logging_utils import setup_logger, flush_logger
 
-# Set up logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
+logger = setup_logger(__name__)
 
 # Initialize the MCP server
 mcp = FastMCP("YouTube Transcript Server")
@@ -68,6 +74,7 @@ def get_youtube_transcript(url: str, language_codes: Optional[list[str]] = None)
     except Exception as e:
         error_msg = f"Error getting transcript: {str(e)}"
         logger.error(error_msg, exc_info=True)
+        flush_logger(logger)
         return error_msg
 
 
@@ -97,6 +104,7 @@ def get_video_id_from_url(url: str) -> str:  # type: ignore
     except Exception as e:
         error_msg = f"Error extracting video ID: {str(e)}"
         logger.error(error_msg, exc_info=True)
+        flush_logger(logger)
         return error_msg
 
 
@@ -137,6 +145,7 @@ def get_available_transcript_languages(url: str) -> str:  # type: ignore
     except Exception as e:
         error_msg = f"Error getting available languages: {str(e)}"
         logger.error(error_msg, exc_info=True)
+        flush_logger(logger)
         return error_msg
 
 

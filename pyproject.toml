@@ -1,0 +1,23 @@
+[project]
+name = "youtubesummary"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "youtube-transcript-api>=0.6.2",
+    "requests>=2.25.0",
+    "boto3>=1.26.0",
+    "yt-dlp>=2023.1.6",
+    "openai-whisper>=20231117",
+    "mcp>=0.3.0",
+    "playwright",
+    "beautifulsoup4>=4.14.3",
+    "google-genai>=1.64.0",
+    "google-generativeai>=0.8.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+]

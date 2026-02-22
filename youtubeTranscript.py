@@ -6,14 +6,10 @@ import time
 from typing import List, Dict, Optional
 from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled, NoTranscriptFound
 from youtube_transcript_api.formatters import TextFormatter
-import logging
 
-# Set up logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
+from logging_utils import setup_logger, flush_logger
+
+logger = setup_logger(__name__)
 
 
 def extract_video_id(url: str) -> Optional[str]:

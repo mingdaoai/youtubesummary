@@ -1,4 +1,18 @@
-#!/usr/bin/env python3
+#!/usr/bin/env uv run --script
+# /// script
+# requires-python = ">=3.10"
+# dependencies = [
+#     "youtube-transcript-api>=0.6.2",
+#     "requests>=2.25.0",
+#     "boto3>=1.26.0",
+#     "yt-dlp>=2023.1.6",
+#     "openai-whisper>=20231117",
+#     "mcp>=0.3.0",
+#     "playwright",
+#     "beautifulsoup4>=4.14.3",
+#     "google-genai>=1.64.0",
+# ]
+# ///
 """
 MCP Server for YouTube Video Summarization
 
@@ -10,11 +24,13 @@ Provides tools to:
 
 import os
 import sys
-import logging
 import json
 import re
 from pathlib import Path
 from typing import Optional
+
+from logging_utils import setup_logger, flush_logger
+import logging
 
 try:
     from mcp.server.fastmcp import FastMCP
@@ -24,7 +40,8 @@ except ImportError:
     except ImportError:
         raise ImportError("mcp library not installed. Run: pip install mcp")
 
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 import yt_dlp
 
 from youtubeSummarize import (
@@ -38,17 +55,12 @@ from youtubeSummarize import (
     PROXY_CONFIG,
     YTDL_PROXY_OPTS,
     CACHE_DIR,
-    invoke_gemini_model,
     summarize_transcript,
     answer_question_with_chunking,
     GEMINI_MODEL_NAME,
 )
 
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
+logger = setup_logger(__name__)
 
 mcp = FastMCP("YouTube Summarizer")
 
@@ -59,9 +71,8 @@ def create_gemini_client():
         api_key_path = os.path.expanduser("~/.mingdaoai/gemini.key")
         with open(api_key_path, "r") as f:
             api_key = f.read().strip()
-        genai.configure(api_key=api_key)
-        model = genai.GenerativeModel(GEMINI_MODEL_NAME)
-        return model
+        client = genai.Client(api_key=api_key)
+        return client
     except Exception as e:
         logger.error(f"Error creating Gemini client: {e}")
         raise
@@ -237,6 +248,7 @@ def summarize_youtube_video(url: str, force_refresh: bool = False) -> str:  # ty
     except Exception as e:
         error_msg = f"Error summarizing video: {str(e)}"
         logger.error(error_msg, exc_info=True)
+        flush_logger(logger)
         return error_msg
 
 
@@ -305,6 +317,7 @@ def ask_about_video(url: str, question: str) -> str:  # type: ignore
     except Exception as e:
         error_msg = f"Error answering question: {str(e)}"
         logger.error(error_msg, exc_info=True)
+        flush_logger(logger)
         return error_msg
 
 
@@ -340,6 +353,7 @@ def get_video_transcript(url: str) -> str:  # type: ignore
     except Exception as e:
         error_msg = f"Error getting transcript: {str(e)}"
         logger.error(error_msg, exc_info=True)
+        flush_logger(logger)
         return error_msg
 
 
@@ -387,6 +401,7 @@ def get_video_info(url: str) -> str:  # type: ignore
     except Exception as e:
         error_msg = f"Error getting video info: {str(e)}"
         logger.error(error_msg, exc_info=True)
+        flush_logger(logger)
         return error_msg
 
 

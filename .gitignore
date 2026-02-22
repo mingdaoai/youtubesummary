@@ -40,7 +40,6 @@ build/
 logs/
 
 # Test and temporary files
-test_*.py
 *_test.py
 kuber*
 transcript_*.txt
@@ -56,3 +55,4 @@ kubernetes/
 # pyenv
 .python-version
 
+.logs/

@@ -1,8 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env uv run
 import os
 import sys
 from pathlib import Path
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 import re
 import time
 import json
@@ -13,9 +14,18 @@ import logging
 import requests
 import subprocess
 import datetime
-from ads.youtube_analyze.youtubeMetaUtil import download_transcript as meta_download_transcript
+try:
+    from ads.youtube_analyze.youtubeMetaUtil import download_transcript as meta_download_transcript
+    META_DOWNLOAD_AVAILABLE = True
+except ImportError:
+    META_DOWNLOAD_AVAILABLE = False
+    meta_download_transcript = None  # type: ignore
 import whisper
 from youtubeTranscript import download_youtube_transcript, download_youtube_transcript_alternative, get_available_languages
+
+from logging_utils import setup_logger, flush_logger
+
+logger = setup_logger(__name__)
 
 # Multi-Tor support imports
 try:
@@ -80,7 +90,7 @@ def get_proxy_config():
                     file_config = json.load(f)
                     proxy_config.update(file_config)
             except Exception as e:
-                logging.warning(f"Failed to load proxy config from file: {e}")
+                logger.warning(f"Failed to load proxy config from file: {e}")
     
     return proxy_config if proxy_config else None
 
@@ -150,7 +160,7 @@ def save_proxy_config(proxy_config):
             json.dump(proxy_config, f, indent=2)
         return True
     except Exception as e:
-        logging.error(f"Failed to save proxy config: {e}")
+        logger.error(f"Failed to save proxy config: {e}")
         return False
 
 def configure_proxies_interactive():
@@ -201,17 +211,12 @@ HISTORY_JSON = Path(__file__).parent / ".youtubesummary_history.json"
 def create_gemini_client():
     """Create Gemini client using API key from file."""
     try:
-        # Read API key from file
         api_key_path = os.path.expanduser("~/.mingdaoai/gemini.key")
         with open(api_key_path, "r") as f:
             api_key = f.read().strip()
         
-        # Configure Gemini
-        genai.configure(api_key=api_key)
-        
-        # Initialize the model
-        model = genai.GenerativeModel(GEMINI_MODEL_NAME)
-        return model
+        client = genai.Client(api_key=api_key)
+        return client
     except Exception as e:
         print(f"Error creating Gemini client: {e}")
         print("Make sure Gemini API key is configured at ~/.mingdaoai/gemini.key")
@@ -258,10 +263,10 @@ def try_youtube_transcript(video_id):
     try:
         # First try multi-Tor approach if available
         if MULTI_TOR_AVAILABLE:
-            logging.info("Using multi-Tor for transcript download")
-            logging.info(f"🎯 Target video: https://www.youtube.com/watch?v={video_id}")
+            logger.info("Using multi-Tor for transcript download")
+            logger.info(f"🎯 Target video: https://www.youtube.com/watch?v={video_id}")
             try:
-                downloader = MultiTorTranscriptDownloader(logging.getLogger(__name__))
+                downloader = MultiTorTranscriptDownloader(logger)
                 transcript_segments = downloader.get_video_transcript_with_multi_tor(video_id)
                 
                 if transcript_segments:
@@ -269,20 +274,20 @@ def try_youtube_transcript(video_id):
                     transcript_text = " ".join([segment['text'] for segment in transcript_segments])
                     language = 'en'  # Default to English
                     cache_transcript(video_id, transcript_text, language)
-                    logging.info(f"✅ Successfully downloaded transcript using multi-Tor: {len(transcript_segments)} segments")
-                    logging.info(f"📊 Multi-Tor stats: {downloader.get_proxy_stats()}")
+                    logger.info(f"✅ Successfully downloaded transcript using multi-Tor: {len(transcript_segments)} segments")
+                    logger.info(f"📊 Multi-Tor stats: {downloader.get_proxy_stats()}")
                     return {"transcript": transcript_text, "language": language}
                 else:
-                    logging.error("❌ Multi-Tor failed to get transcript - trying fallback methods")
-                    logging.info(f"📊 Multi-Tor final stats: {downloader.get_proxy_stats()}")
+                    logger.error("❌ Multi-Tor failed to get transcript - trying fallback methods")
+                    logger.info(f"📊 Multi-Tor final stats: {downloader.get_proxy_stats()}")
             except Exception as e:
-                logging.error(f"❌ Multi-Tor failed with exception: {e} - trying fallback methods")
+                logger.error(f"❌ Multi-Tor failed with exception: {e} - trying fallback methods")
                 import traceback
-                logging.debug(f"Multi-Tor exception traceback: {traceback.format_exc()}")
+                logger.debug(f"Multi-Tor exception traceback: {traceback.format_exc()}")
         
         # Fallback: Try with configured proxies
         if PROXY_CONFIG:
-            logging.info(f"Trying transcript download with proxy configuration: {PROXY_CONFIG}")
+            logger.info(f"Trying transcript download with proxy configuration: {PROXY_CONFIG}")
             try:
                 # Use youtubeTranscript module with proxy support
                 transcript_result = download_youtube_transcript(
@@ -291,23 +296,23 @@ def try_youtube_transcript(video_id):
                 )
                 if transcript_result:
                     cache_transcript(video_id, transcript_result['transcript'], transcript_result['language'])
-                    logging.info(f"✅ Successfully downloaded transcript using proxy")
+                    logger.info(f"✅ Successfully downloaded transcript using proxy")
                     return transcript_result
             except Exception as e:
-                logging.warning(f"Proxy transcript download failed: {e}")
+                logger.warning(f"Proxy transcript download failed: {e}")
         
         # Last resort: Try direct connection
-        logging.info("Trying direct connection for transcript download")
+        logger.info("Trying direct connection for transcript download")
         try:
             transcript_result = download_youtube_transcript(video_id)
             if transcript_result:
                 cache_transcript(video_id, transcript_result['transcript'], transcript_result['language'])
-                logging.info(f"✅ Successfully downloaded transcript via direct connection")
+                logger.info(f"✅ Successfully downloaded transcript via direct connection")
                 return transcript_result
         except Exception as e:
-            logging.error(f"Direct transcript download failed: {e}")
+            logger.error(f"Direct transcript download failed: {e}")
         
-        logging.error("❌ All transcript download methods failed")
+        logger.error("❌ All transcript download methods failed")
         return None
         
     except Exception as e:
@@ -335,13 +340,13 @@ def download_video_if_needed(video_id, video_url, video_path):
     base_opts.update(YTDL_PROXY_OPTS)
     
     if video_path.exists():
-        logging.info(f"Video file {video_path} already exists. Using cached mp4 for transcription.")
+        logger.info(f"Video file {video_path} already exists. Using cached mp4 for transcription.")
         try:
             with yt_dlp.YoutubeDL(base_opts) as ydl:
                 info = ydl.extract_info(video_url, download=False)
                 title = info.get('title', '')
         except Exception as e:
-            logging.error(f"yt-dlp failed to extract info for existing file: {e}", exc_info=True)
+            logger.error(f"yt-dlp failed to extract info for existing file: {e}", exc_info=True)
             title = ''
     else:
         response = input("Would you like to download and transcribe the video? (y/n): ")
@@ -367,30 +372,30 @@ def download_video_if_needed(video_id, video_url, video_path):
             
             if os.path.exists(cookies_path):
                 ydl_opts['cookiefile'] = cookies_path
-                logging.info(f"Using cookies from {cookies_path}")
+                logger.info(f"Using cookies from {cookies_path}")
             
             if PROXY_CONFIG:
-                logging.info(f"Using proxy for download: {YTDL_PROXY_OPTS.get('proxy', 'none')}")
+                logger.info(f"Using proxy for download: {YTDL_PROXY_OPTS.get('proxy', 'none')}")
             
             try:
                 with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                     info = ydl.extract_info(video_url, download=True)
                     title = info.get('title', '')
-                logging.info(f"Downloaded video with format: {fmt}")
+                logger.info(f"Downloaded video with format: {fmt}")
                 break  # Success!
             except Exception as e:
-                logging.error(f"yt-dlp failed with format '{fmt}': {e}", exc_info=True)
+                logger.error(f"yt-dlp failed with format '{fmt}': {e}", exc_info=True)
                 last_exception = e
                 if '403' in str(e):
-                    logging.warning("\nHTTP 403 Forbidden error detected. This may be due to age restriction, region lock, or YouTube signature changes.\n")
-                    logging.warning("Try updating yt-dlp: pip install -U yt-dlp")
-                    logging.warning("If the video requires login, export your YouTube cookies as cookies.txt and place it in the current directory.")
+                    logger.warning("\nHTTP 403 Forbidden error detected. This may be due to age restriction, region lock, or YouTube signature changes.\n")
+                    logger.warning("Try updating yt-dlp: pip install -U yt-dlp")
+                    logger.warning("If the video requires login, export your YouTube cookies as cookies.txt and place it in the current directory.")
                     if PROXY_CONFIG:
-                        logging.warning(f"Current proxy configuration: {PROXY_CONFIG}")
-                        logging.warning("Try disabling proxy or using a different proxy.")
+                        logger.warning(f"Current proxy configuration: {PROXY_CONFIG}")
+                        logger.warning("Try disabling proxy or using a different proxy.")
                 continue
         else:
-            logging.error("All format attempts failed.")
+            logger.error("All format attempts failed.")
             traceback.print_exc()
             raise last_exception
     return title
@@ -411,10 +416,10 @@ def detect_and_confirm_language(video_id, title):
         detected_language = 'en-US'
     if cached_language:
         language = cached_language
-        logging.info(f"Using cached language: {language}")
+        logger.info(f"Using cached language: {language}")
     else:
         language = detected_language
-        logging.info(f"Detected language: {language}")
+        logger.info(f"Detected language: {language}")
         # Automatically use the detected language and cache it
         cache_data = {}
         if cache_file.exists():
@@ -431,18 +436,18 @@ def detect_and_confirm_language(video_id, title):
 def upload_to_s3_if_needed(video_path, s3, bucket, s3_key):
     try:
         s3.head_object(Bucket=bucket, Key=s3_key)
-        logging.info(f"S3 object '{bucket}/{s3_key}' already exists. Skipping upload.")
+        logger.info(f"S3 object '{bucket}/{s3_key}' already exists. Skipping upload.")
     except s3.exceptions.ClientError as e:
         if e.response['Error']['Code'] == '404':
-            logging.info(f"Uploading {video_path} to S3 bucket '{bucket}' at '{s3_key}'")
+            logger.info(f"Uploading {video_path} to S3 bucket '{bucket}' at '{s3_key}'")
             try:
                 s3.upload_file(str(video_path), bucket, s3_key)
-                logging.info("Upload to S3 completed.")
+                logger.info("Upload to S3 completed.")
             except Exception as e:
-                logging.error(f"Failed to upload to S3: {e}", exc_info=True)
+                logger.error(f"Failed to upload to S3: {e}", exc_info=True)
                 raise
         else:
-            logging.error(f"Error checking S3 object: {e}", exc_info=True)
+            logger.error(f"Error checking S3 object: {e}", exc_info=True)
             raise
 
 def start_or_resume_transcribe_job(transcribe, job_name, job_uri, language):
@@ -451,11 +456,11 @@ def start_or_resume_transcribe_job(transcribe, job_name, job_uri, language):
         status = transcribe.get_transcription_job(TranscriptionJobName=job_name)
         job_exists = True
         job_status = status['TranscriptionJob']['TranscriptionJobStatus']
-        logging.info(f"Found existing AWS Transcribe job: {job_name} with status: {job_status}")
+        logger.info(f"Found existing AWS Transcribe job: {job_name} with status: {job_status}")
     except transcribe.exceptions.BadRequestException:
         job_exists = False
     if not job_exists:
-        logging.info(f"Starting AWS Transcribe job: {job_name} for URI: {job_uri} with language: {language}")
+        logger.info(f"Starting AWS Transcribe job: {job_name} for URI: {job_uri} with language: {language}")
         try:
             transcribe.start_transcription_job(
                 TranscriptionJobName=job_name,
@@ -470,22 +475,22 @@ def start_or_resume_transcribe_job(transcribe, job_name, job_uri, language):
             status = transcribe.get_transcription_job(TranscriptionJobName=job_name)
             job_status = status['TranscriptionJob']['TranscriptionJobStatus']
         except Exception as e:
-            logging.error(f"Failed to start transcription job: {e}", exc_info=True)
+            logger.error(f"Failed to start transcription job: {e}", exc_info=True)
             raise
     return status
 
 def wait_for_transcribe_job(transcribe, job_name, status):
-    logging.info(f"Waiting for AWS Transcribe job '{job_name}' to complete...")
+    logger.info(f"Waiting for AWS Transcribe job '{job_name}' to complete...")
     while True:
         try:
             job_status = status['TranscriptionJob']['TranscriptionJobStatus']
-            logging.info(f"Transcription job status: {job_status}")
+            logger.info(f"Transcription job status: {job_status}")
             if job_status in ['COMPLETED', 'FAILED']:
                 break
             time.sleep(5)
             status = transcribe.get_transcription_job(TranscriptionJobName=job_name)
         except Exception as e:
-            logging.error(f"Error while checking transcription job status: {e}", exc_info=True)
+            logger.error(f"Error while checking transcription job status: {e}", exc_info=True)
             raise
     return status
 
@@ -496,7 +501,7 @@ def fetch_transcript_from_s3(s3, bucket, key):
 
 def retry_transcribe_if_needed(transcribe, s3, job_name, job_uri, language, bucket, key):
     transcribe.delete_transcription_job(TranscriptionJobName=job_name)
-    logging.info(f"Retrying AWS Transcribe job: {job_name} for URI: {job_uri} with language: {language}")
+    logger.info(f"Retrying AWS Transcribe job: {job_name} for URI: {job_uri} with language: {language}")
     try:
         transcribe.start_transcription_job(
             TranscriptionJobName=job_name,
@@ -512,7 +517,7 @@ def retry_transcribe_if_needed(transcribe, s3, job_name, job_uri, language, buck
         while True:
             status = transcribe.get_transcription_job(TranscriptionJobName=job_name)
             job_status = status['TranscriptionJob']['TranscriptionJobStatus']
-            logging.info(f"Transcription job status (retry): {job_status}")
+            logger.info(f"Transcription job status (retry): {job_status}")
             if job_status in ['COMPLETED', 'FAILED']:
                 break
             time.sleep(5)
@@ -520,18 +525,18 @@ def retry_transcribe_if_needed(transcribe, s3, job_name, job_uri, language, buck
             transcript_uri = status['TranscriptionJob']['Transcript']['TranscriptFileUri']
             parsed = urlparse(transcript_uri)
             key = parsed.path.lstrip('/')
-            logging.info(f"Fetching transcript from S3 (retry): bucket='{bucket}', key='{key}'")
+            logger.info(f"Fetching transcript from S3 (retry): bucket='{bucket}', key='{key}'")
             transcript_data = fetch_transcript_from_s3(s3, bucket, key)
             return transcript_data
         else:
-            logging.error("Transcription job failed after retry.")
+            logger.error("Transcription job failed after retry.")
             raise Exception("Transcription job failed after retry")
     except Exception as e:
-        logging.error(f"Failed to retry transcription job: {e}", exc_info=True)
+        logger.error(f"Failed to retry transcription job: {e}", exc_info=True)
         raise
 
 def download_transcript(video_id: str) -> dict:
-    logging.info("Step 1: Try extracting transcript with youtubeTranscript.py")
+    logger.info("Step 1: Try extracting transcript with youtubeTranscript.py")
     result = try_youtube_transcript(video_id)
     if result:
         # Try to cache title if not present
@@ -557,15 +562,15 @@ def download_transcript(video_id: str) -> dict:
         if title:
             cache_transcript(video_id, result["transcript"], result["language"], title)
         return {**result, "title": title} if title else result
-    logging.info("Step 2: Download video if needed")
+    logger.info("Step 2: Download video if needed")
     temp_dir = CACHE_DIR
     temp_dir.mkdir(exist_ok=True)
     video_url = f"https://www.youtube.com/watch?v={video_id}"
     video_path = temp_dir / f"{video_id}.mp4"
     title = download_video_if_needed(video_id, video_url, video_path)
-    logging.info("Step 3: Detect and confirm language")
+    logger.info("Step 3: Detect and confirm language")
     language = detect_and_confirm_language(video_id, title)
-    logging.info("Step 4: Extract mp3 from video before uploading")
+    logger.info("Step 4: Extract mp3 from video before uploading")
     mp3_path = temp_dir / f"{video_id}.mp3"
     if not mp3_path.exists():
         try:
@@ -573,62 +578,62 @@ def download_transcript(video_id: str) -> dict:
                 "ffmpeg", "-y", "-i", str(video_path),
                 "-vn", "-acodec", "libmp3lame", "-ar", "44100", "-ac", "2", "-b:a", "192k", str(mp3_path)
             ]
-            logging.info(f"Running ffmpeg to extract mp3: {' '.join(cmd)}")
+            logger.info(f"Running ffmpeg to extract mp3: {' '.join(cmd)}")
             subprocess.run(cmd, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            logging.info(f"MP3 extraction complete: {mp3_path}")
+            logger.info(f"MP3 extraction complete: {mp3_path}")
         except Exception as e:
             import traceback
             traceback.print_exc()
             raise
     else:
-        logging.info(f"MP3 file {mp3_path} already exists. Using cached mp3 for upload.")
+        logger.info(f"MP3 file {mp3_path} already exists. Using cached mp3 for upload.")
 
     # Step 5: Transcribe with Whisper
-    logging.info("Step 5: Transcribe audio with Whisper")
+    logger.info("Step 5: Transcribe audio with Whisper")
     try:
         transcript, whisper_language = transcribe_with_whisper(mp3_path)
         cache_transcript(video_id, transcript, whisper_language, title)
-        logging.info("Transcript successfully cached using Whisper.")
+        logger.info("Transcript successfully cached using Whisper.")
         # Optionally delete mp4 and mp3 after successful transcription
         try:
             if video_path.exists():
                 video_path.unlink()
-                logging.info(f"Deleted video file: {video_path}")
+                logger.info(f"Deleted video file: {video_path}")
             if mp3_path.exists():
                 mp3_path.unlink()
-                logging.info(f"Deleted mp3 file: {mp3_path}")
+                logger.info(f"Deleted mp3 file: {mp3_path}")
         except Exception as e:
             traceback.print_exc()
             raise
         return {"transcript": transcript, "language": whisper_language, "title": title}
     except Exception as e:
-        logging.error("Whisper transcription failed, falling back to AWS routines.", exc_info=True)
+        logger.error("Whisper transcription failed, falling back to AWS routines.", exc_info=True)
 
     # ========== AWS TRANSCRIBE ROUTINES (fallback, kept for future use) ==========
-    logging.info("Step 5: Upload mp3 to S3")
+    logger.info("Step 5: Upload mp3 to S3")
     import boto3
     s3 = boto3.client('s3')
     bucket = 'mdaudiosound'
     s3_key = f'input/{video_id}.mp3'
     upload_to_s3_if_needed(mp3_path, s3, bucket, s3_key)
-    logging.info("Step 6: Start or resume AWS Transcribe job")
+    logger.info("Step 6: Start or resume AWS Transcribe job")
     transcribe = boto3.client('transcribe', 'us-west-2')
     job_name = f"transcribe-job-{video_id}"
     job_uri = f"s3://{bucket}/{s3_key}"
     status = start_or_resume_transcribe_job(transcribe, job_name, job_uri, language)
-    logging.info("Step 7: Wait for AWS Transcribe job to complete")
+    logger.info("Step 7: Wait for AWS Transcribe job to complete")
     status = wait_for_transcribe_job(transcribe, job_name, status)
-    logging.info("Step 8: Fetch transcript from URL")
+    logger.info("Step 8: Fetch transcript from URL")
     retry_transcribe = False
     if status['TranscriptionJob']['TranscriptionJobStatus'] == 'COMPLETED':
         transcript_uri = status['TranscriptionJob']['Transcript']['TranscriptFileUri']
-        logging.info(f"Fetching transcript from URL: {transcript_uri}")
+        logger.info(f"Fetching transcript from URL: {transcript_uri}")
         try:
             response = requests.get(transcript_uri)
             response.raise_for_status()
             transcript_data = response.json()
         except Exception as e:
-            logging.error(f"Failed to fetch transcript from URL: {e}", exc_info=True)
+            logger.error(f"Failed to fetch transcript from URL: {e}", exc_info=True)
             raise
         # Extract transcript text
         transcript = "\n".join(item['alternatives'][0]['content'] 
@@ -636,21 +641,21 @@ def download_transcript(video_id: str) -> dict:
                              if item['type'] == 'pronunciation')
         # Cache and return
         cache_transcript(video_id, transcript, language, title)
-        logging.info("Transcript successfully cached.")
+        logger.info("Transcript successfully cached.")
         # Delete mp4 and mp3 after successful transcription
         try:
             if video_path.exists():
                 video_path.unlink()
-                logging.info(f"Deleted video file: {video_path}")
+                logger.info(f"Deleted video file: {video_path}")
             if mp3_path.exists():
                 mp3_path.unlink()
-                logging.info(f"Deleted mp3 file: {mp3_path}")
+                logger.info(f"Deleted mp3 file: {mp3_path}")
         except Exception as e:
             traceback.print_exc()
             raise
         return {"transcript": transcript, "language": language, "title": title}
     else:
-        logging.error("Transcription job failed.")
+        logger.error("Transcription job failed.")
         raise Exception("Transcription job failed")
 
 def get_transcript(video_id: str) -> dict:
@@ -676,34 +681,27 @@ def get_transcript(video_id: str) -> dict:
 
 # ========== GEMINI CLIENT ==========
 
-def invoke_gemini_model(model, prompt: str, max_tokens: int = 2000, temperature: float = 0.3) -> str:
+def invoke_gemini_model(client, prompt: str, max_tokens: int = 2000, temperature: float = 0.3) -> str:
     """Invoke Gemini model with a prompt."""
     try:
-        # Configure generation parameters
-        generation_config = genai.types.GenerationConfig(
-            max_output_tokens=max_tokens,
-            temperature=temperature,
+        response = client.models.generate_content(
+            model=GEMINI_MODEL_NAME,
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                max_output_tokens=max_tokens,
+                temperature=temperature,
+            )
         )
         
-        # Generate content
-        response = model.generate_content(
-            prompt,
-            generation_config=generation_config
-        )
-        
-        # Check if response has valid candidates and parts
         if not response.candidates:
             raise ValueError("No candidates returned in response")
         
         candidate = response.candidates[0]
         
-        # Get finish_reason (could be int, enum, or string)
         finish_reason = getattr(candidate, 'finish_reason', None)
         if finish_reason is not None:
-            # Convert to string representation if it's an enum or int
             try:
                 finish_reason_str = str(finish_reason)
-                # If it's an enum, try to get the name
                 if hasattr(finish_reason, 'name'):
                     finish_reason_str = finish_reason.name
                 elif isinstance(finish_reason, int):
@@ -721,7 +719,6 @@ def invoke_gemini_model(model, prompt: str, max_tokens: int = 2000, temperature:
         else:
             finish_reason_str = "UNKNOWN"
         
-        # Check if candidate has parts before accessing text
         has_parts = False
         if hasattr(candidate, 'content') and candidate.content:
             if hasattr(candidate.content, 'parts') and candidate.content.parts:
@@ -744,11 +741,9 @@ def invoke_gemini_model(model, prompt: str, max_tokens: int = 2000, temperature:
                     error_msg += " (Response exceeded max tokens, but no content was returned)"
             raise ValueError(error_msg)
         
-        # Try to get text from parts
         try:
             return response.text.strip()
         except (ValueError, AttributeError) as e:
-            # Fallback: try to extract text manually from parts
             text_parts = []
             if hasattr(candidate, 'content') and candidate.content and hasattr(candidate.content, 'parts'):
                 for part in candidate.content.parts:
@@ -761,7 +756,6 @@ def invoke_gemini_model(model, prompt: str, max_tokens: int = 2000, temperature:
                 raise ValueError(f"Could not extract text from response. Finish reason: {finish_reason_str}")
         
     except ValueError as e:
-        # Re-raise ValueError with better context
         print(f"Error invoking Gemini model: {e}")
         raise
     except Exception as e:
@@ -882,7 +876,7 @@ Return ONLY valid JSON, no other text."""
             last_exception = e
             if attempt < max_retries - 1:
                 wait_time = (attempt + 1) * 2  # Exponential backoff: 2s, 4s, 6s
-                logging.warning(f"Error processing chunk {chunk_index + 1} (attempt {attempt + 1}/{max_retries}): {e}. Retrying in {wait_time}s...")
+                logger.warning(f"Error processing chunk {chunk_index + 1} (attempt {attempt + 1}/{max_retries}): {e}. Retrying in {wait_time}s...")
                 time.sleep(wait_time)
                 # Try reducing chunk size further on retry
                 if "MAX_TOKENS" in str(e) and len(chunk) > 10000:
@@ -910,7 +904,7 @@ Return ONLY valid JSON, no other text."""
             last_exception = e
             if attempt < max_retries - 1:
                 wait_time = (attempt + 1) * 2
-                logging.warning(f"JSON parsing error for chunk {chunk_index + 1} (attempt {attempt + 1}/{max_retries}): {e}. Retrying in {wait_time}s...")
+                logger.warning(f"JSON parsing error for chunk {chunk_index + 1} (attempt {attempt + 1}/{max_retries}): {e}. Retrying in {wait_time}s...")
                 time.sleep(wait_time)
             else:
                 # Last attempt - try to extract something useful
@@ -924,7 +918,7 @@ Return ONLY valid JSON, no other text."""
                 break
     
     # If we get here, all retries failed
-    logging.error(f"Failed to process chunk {chunk_index + 1} after {max_retries} attempts: {last_exception}")
+    logger.error(f"Failed to process chunk {chunk_index + 1} after {max_retries} attempts: {last_exception}")
     
     # Return a safe default
     return {
@@ -1110,7 +1104,7 @@ def save_url_history(history):
         with open(HISTORY_JSON, "w", encoding="utf-8") as f:
             json.dump(history, f, ensure_ascii=False, indent=2)
     except Exception as e:
-        logging.error(f"Failed to save URL history: {e}", exc_info=True)
+        logger.error(f"Failed to save URL history: {e}", exc_info=True)
         traceback.print_exc()
 
 def add_to_url_history(url, title):
@@ -1301,10 +1295,6 @@ def main():
         chat_history.append({"question": question, "answer": answer})
 
 if __name__ == "__main__":
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s %(levelname)s %(pathname)s:%(lineno)d %(message)s',
-    )
     try:
         import readline
         import atexit
