@@ -1,4 +1,14 @@
-#!/usr/bin/env uv run
+#!/usr/bin/env uv run --script
+# /// script
+# requires-python = ">=3.10"
+# dependencies = [
+#     "google-genai>=0.8.0",
+#     "yt-dlp>=2023.1.6",
+#     "requests>=2.25.0",
+#     "boto3>=1.26.0",
+#     "openai-whisper>=20231117",
+# ]
+# ///
 import os
 import sys
 from pathlib import Path
