@@ -1,0 +1,13 @@
+{
+  "_comment": "Proxy configuration for YouTube downloads",
+  "_usage": "Set these via environment variables or edit this file",
+  "_env_vars": {
+    "HTTP_PROXY": "http://proxy.example.com:8080",
+    "HTTPS_PROXY": "https://proxy.example.com:8080",
+    "SOCKS_PROXY": "socks5://127.0.0.1:9050",
+    "USE_TOR": "true"
+  },
+  "socks": "socks5://127.0.0.1:9050",
+  "http": "",
+  "https": ""
+}
